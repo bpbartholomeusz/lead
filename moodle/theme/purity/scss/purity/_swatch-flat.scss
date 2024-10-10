@@ -1,0 +1,50 @@
+$purity-swatch-flat-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1) !default;
+$purity-swatch-flat-popup-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !default;
+
+.swatch-flat {
+  .header-wrapper,
+  .navbar-vertical,
+  .card,
+  .page-footer,
+  &.layout-modern .drawer.drawer-left,
+  [data-region="right-hand-drawer"].drawer {
+    box-shadow: $purity-swatch-flat-box-shadow;
+  }
+
+  .dropdown-menu,
+  .popover-region-container {
+    box-shadow: $purity-swatch-flat-popup-box-shadow;
+  }
+
+  &.layout-modern .drawer.drawer-right.scrolled .drawerheader {
+    box-shadow: 10px 1px 10px rgba(0,0,0,.1);
+  }
+
+  &.layout-modern .drawer.drawer-left.scrolled .drawerheader {
+    box-shadow: -10px 1px 10px rgba(0,0,0,.1);
+  }
+
+  .block_not_card.card,
+  .btn,
+  .block .footer a,
+  .custom-select:focus,
+  .simplesearchform .input-group .form-control:focus,
+  .card:not(.block_not_card) .card,
+  .mform fieldset.collapsible legend a.fheader,
+  .see-all-link,
+  .nav-pills .nav-link,
+  .comment-ctrl .comment-area > .fd > a,
+  .comment-ctrl .comment-area > .db textarea:focus,
+  .form-control:focus,
+  .page-top-settings-menu .dropdown > a,
+  &#page-user-profile .node_category .editprofile a,
+  .context-header-settings-menu .dropdown > a,
+  .nav-tabs {
+    box-shadow: none !important;
+  }
+
+  .block .block-cards .btn.btn-link.btn-icon:hover,
+  .block .block-cards .btn.btn-link.btn-icon:focus {
+    background-color: $gray-200 !important;
+  }
+}

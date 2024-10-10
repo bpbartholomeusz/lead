@@ -1,0 +1,585 @@
+$purity-drawer-right-width: 415px !default;
+$purity-drawer-header-height: 90px !default;
+$purity-drawer-left-bg-color: #ffffff !default;
+
+.layout-modern {
+  // Primary Navigation
+  .primary-navigation {
+    .navigation {
+      height: auto;
+
+      .nav-link {
+        display: block;
+        padding: $navbar-nav-link-padding-y $navbar-nav-link-padding-x;
+        height: auto;
+        border: none;
+        font-weight: $font-weight-bold;
+
+        &:hover,
+        &:focus {
+          background-color: transparent;
+        }
+      }
+    }
+
+    @media (max-width: calc(#{$purity-menu-breakpoint} - 0.02px)) {
+      display: none !important;
+    }
+  }
+  // Mobile Menu Drawer (related to Primary Navigation above)
+  @media (min-width: $purity-menu-breakpoint) {
+    .navbar-toggler {
+      display: none !important;
+    }
+  }
+  @media (max-width: calc(#{$purity-menu-breakpoint} - 0.02px)) {
+    .drawer-primary {
+      top: 0 !important;
+      height: 100% !important;
+      z-index: 2002 !important;
+    }
+  }
+  .navbar-dark {
+    .primary-navigation {
+      .navigation {
+        .nav-link {
+          color: $navbar-dark-color;
+
+          &:hover {
+            color: $navbar-dark-hover-color;
+          }
+
+          &:focus {
+            color: $navbar-dark-hover-color;
+          }
+        }
+
+        .show > .nav-link,
+        .active > .nav-link,
+        .nav-link.show,
+        .nav-link.active {
+          color: $navbar-dark-active-color;
+        }
+      }
+    }
+  }
+  .navbar-light {
+    .primary-navigation {
+      .navigation {
+        .nav-link {
+          color: $navbar-light-color;
+
+          &:hover {
+            color: $primary;
+          }
+
+          &:focus {
+            color: $navbar-light-hover-color;
+          }
+        }
+
+        .show > .nav-link,
+        .active > .nav-link,
+        .nav-link.show,
+        .nav-link.active {
+          color: $navbar-light-active-color;
+        }
+      }
+    }
+  }
+
+  // Secondary Navigation
+  .secondary-navigation {
+    padding: 15px 30px;
+
+    .navigation {
+      height: auto;
+      padding: 0;
+      margin: 0;
+      border: none;
+      background-color: transparent;
+
+      .nav-tabs {
+        max-width: none;
+        margin: 0;
+        background-color: transparent;
+        box-shadow: none;
+        gap: 10px;
+
+        .nav-link {
+          height: auto;
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          border-radius: 30px;
+          padding: 0.5rem 0.75rem;
+          font-size: 80%;
+          font-weight: $font-weight-bold;
+          line-height: 1;
+          letter-spacing: 0.5px;
+
+          &.active {
+            color: $white !important;
+            background-color: $primary !important;
+            border-color: $primary !important;
+
+            &::before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    &.border-bottom {
+      border-color: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    &.bg-default {
+      .navigation {
+        .nav-tabs {
+          .nav-link {
+            color: $navbar-dark-hover-color;
+            border-color: rgba(255, 255, 255, 0.2);
+
+            &:hover,
+            &:focus {
+              background-color: rgba(255, 255, 255, 0.2);
+            }
+          }
+        }
+      }
+
+      &.border-bottom {
+        border-color: rgba(255, 255, 255, 0.2) !important;
+      }
+    }
+  }
+
+  // More Menu
+  .moremenu {
+    .dropdown-item {
+      &[aria-current="true"],
+      &[aria-selected="true"] {
+        &::before {
+          position: static;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  // Page Max-Width
+  &.limitedwidth {
+    .page-content-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+
+  // Recently Accessed Courses Block
+  #block-region-content .block-recentlyaccessedcourses {
+    @media (max-width: 767px) {
+      margin: 0;
+    }
+  }
+
+  .dashboard-card-deck:not(.fixed-width-cards) {
+    @media (max-width: 767px) {
+      .dashboard-card {
+        width: 100%;
+      }
+    }
+    @media (min-width: 768px) {
+      .dashboard-card {
+        width: calc(50% - #{$card-gutter});
+      }
+    }
+    @media (min-width: 992px) {
+      .dashboard-card {
+        width: calc(33.33% - #{$card-gutter});
+      }
+    }
+    // @media (min-width: 1200px) {
+    //     .dashboard-card {
+    //         width: calc(25% - #{$card-gutter});
+    //     }
+    // }
+  }
+
+  #page-wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  .add_block_button {
+    display: block !important;
+  }
+
+  #page {
+    scroll-behavior: smooth;
+
+    &.drawers {
+      padding: 0;
+      margin-top: 0;
+
+      @include thin-scrolls($body-bg);
+
+      &.show-drawer-right {
+        @media (min-width: 992px) {
+          margin-right: $purity-drawer-right-width;
+        }
+      }
+
+      .main-inner {
+        max-width: none !important;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+
+        #page-content {
+          padding: 0 30px;
+          margin-top: -4.5rem;
+        }
+      }
+
+      div[role="main"] {
+        padding: 0;
+      }
+
+      .block_myoverview > .card-body {
+        padding: $card-spacer-x !important;
+      }
+    }
+  }
+
+  .is-frontpage {
+    #page {
+      &.drawers {
+        #page-content {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  // CourseIndex Scroll
+  :target {
+    scroll-margin-top: 10px;
+  }
+
+  // Drawer
+  &.header-style1 {
+    .drawer-toggles {
+      .drawer-toggler {
+        top: 172px;
+      }
+    }
+    .drawer-left,
+    .drawer-right {
+      @media (min-width: 992px) {
+        top: 72px;
+        height: calc(100vh - 72px);
+      }
+    }
+    &.has-secondarynavigation {
+      .drawer-toggles {
+        .drawer-toggler {
+          top: 234px;
+        }
+      }
+      .drawer-left,
+      .drawer-right {
+        @media (min-width: 992px) {
+          top: 132px;
+          height: calc(100vh - 132px);
+        }
+      }
+    }
+  }
+  &.header-style2 {
+    .drawer-toggles {
+      .drawer-toggler {
+        top: 220px;
+      }
+    }
+    .drawer-left,
+    .drawer-right {
+      @media (min-width: 992px) {
+        top: 119px;
+        height: calc(100vh - 119px);
+      }
+    }
+    &.has-secondarynavigation {
+      .drawer-toggles {
+        .drawer-toggler {
+          top: 280px;
+        }
+      }
+      .drawer-left,
+      .drawer-right {
+        @media (min-width: 992px) {
+          top: 178px;
+          height: calc(100vh - 178px);
+        }
+      }
+    }
+  }
+  &.header-style3 {
+    .drawer-toggles {
+      .drawer-toggler {
+        top: 225px;
+      }
+    }
+    .drawer-left,
+    .drawer-right {
+      @media (min-width: 992px) {
+        top: 128px;
+        height: calc(100vh - 128px);
+      }
+    }
+    &.has-secondarynavigation {
+      .drawer-toggles {
+        .drawer-toggler {
+          top: 290px;
+        }
+      }
+      .drawer-left,
+      .drawer-right {
+        @media (min-width: 992px) {
+          top: 188px;
+          height: calc(100vh - 188px);
+        }
+      }
+    }
+  }
+
+}
+
+
+// Drawer
+.drawer {
+  &.drawer-primary {
+    .drawerheader {
+      height: 30px;
+      padding: 0;
+      margin: 1rem;
+      box-shadow: none !important;
+
+      .drawertoggle {
+        margin-left: 0;
+      }
+    }
+
+    .drawercontent {
+      padding: 0 !important;
+    }
+  }
+
+  &.drawer-right {
+    width: $purity-drawer-right-width;
+    max-width: 100%;
+    right: calc(-#{$purity-drawer-right-width} + -10px);
+    background-color: $body-bg;
+
+    &.show {
+      right: 0;
+    }
+
+    &.scrolled {
+      .drawerheader {
+        background-color: $body-bg;
+        box-shadow: 7px 8px 11px -7px $drawer-shadow-color;
+      }
+    }
+
+    .drawercontent {
+      padding: 30px;
+
+      @include thin-scrolls($body-bg);
+    }
+  }
+
+  &.drawer-left {
+    background-color: $purity-drawer-left-bg-color;
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.05);
+    box-shadow: $navbar-vertical-box-shadow;
+
+    .drawertoggle {
+      margin-left: 0;
+    }
+
+    &.scrolled {
+      .drawerheader {
+        background-color: $purity-drawer-left-bg-color;
+        box-shadow: -7px 8px 11px -7px $drawer-shadow-color;
+      }
+    }
+
+    .drawercontent {
+      padding: 25px 10px;
+
+      @include thin-scrolls($purity-drawer-left-bg-color);
+    }
+  }
+
+  .drawerheader {
+    height: $purity-drawer-header-height;
+    padding: 30px;
+    margin-bottom: -30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .drawercontent {
+    height: calc(100% - calc(#{$purity-drawer-header-height} - 30px));
+    z-index: auto;
+  }
+}
+.drawer-toggles {
+  .drawer-toggler {
+    .btn {
+      background-color: $white;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.05) !important;
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+  .drawer-right-toggle {
+    margin-right: 0 !important;
+
+    .btn {
+      .icon {
+        margin-right: 0.6rem;
+      }
+    }
+  }
+}
+.layout-classic {
+  .drawer-toggles .drawer-left-toggle {
+    left: auto;
+  }
+
+  &.header-style1 {
+    .drawer-toggles {
+      .drawer-toggler {
+        top: 172px;
+      }
+    }
+  }
+  &.header-style2 {
+    .drawer-toggles {
+      .drawer-toggler {
+        top: 220px;
+      }
+    }
+  }
+  &.header-style3 {
+    .drawer-toggles {
+      .drawer-toggler {
+        top: 225px;
+      }
+    }
+  }
+
+  .drawer {
+    &.drawer-left {
+      top: 0;
+      height: 100vh;
+      z-index: 1050;
+      transition: left 0.5s ease,right 0.5s ease,top 0.5s ease,bottom 0.5s ease,visibility 0.5s ease;
+    }
+  }
+
+  &.drawer-open-index {
+    @include media-breakpoint-up(md) {
+      margin-left: $drawer-left-width;
+    }
+
+    .nav-drawer-btn-container,
+    .drawer-toggles,
+    .modal-backdrop.show {
+      display: none !important;
+    }
+  }
+
+  &.course-index-enabled {
+    @include transition(margin-left 0.5s ease, margin-right 0.5s ease);
+
+    #nav-drawer .course-progressbar-link,
+    #nav-drawer .course-progressbar-wrapper {
+      display: none !important;
+    }
+  }
+}
+
+// CourseIndex
+.courseindex {
+  .courseindex-item {
+    padding: 0.5rem 0.75rem !important;
+    font-size: $navbar-nav-link-font-size;
+
+    .courseindex-chevron,
+    .courseindex-link {
+      color: $navbar-light-color;
+    }
+
+    &:hover {
+      .courseindex-chevron,
+      .courseindex-link {
+        color: $primary;
+      }
+    }
+
+    .completioninfo {
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+
+  .courseindex-section-title {
+    a {
+      font-weight: $font-weight-bold;
+    }
+
+    &.pageitem:not(.active) {
+      background-color: transparent !important;
+
+      a {
+        color: $navbar-light-color !important;
+      }
+    }
+  }
+
+  .pageitem,
+  .active {
+    background-color: $gray-100 !important;
+    color: $navbar-light-active-color !important;
+    border-color: transparent !important;
+
+    a {
+      color: $navbar-light-active-color !important;
+    }
+  }
+
+  .icon {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+  }
+  .dragicon {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      margin: 0;
+    }
+  }
+}
+.pagelayout-course {
+  .pageitem:not(.active) {
+    background-color: transparent !important;
+  }
+}

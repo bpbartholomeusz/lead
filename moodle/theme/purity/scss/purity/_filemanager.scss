@@ -1,0 +1,111 @@
+$purity-file-empty-container-border-color: #6d8dd9 !default;
+$purity-file-empty-container-color: #3f6bd1 !default;
+$purity-file-empty-container-background-color: #eff3fd !default;
+$purity-file-target-container-border-color: #dd3131 !default;
+$purity-file-target-container-color: #dd3131 !default;
+$purity-file-target-container-background-color: #fde9e9 !default;
+
+.filemanager {
+  .fp-navbar,
+  .filemanager-container {
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background-color: $gray-100;
+  }
+
+  .filemanager-toolbar {
+    padding: 10px;
+  }
+
+  .fp-restrictions {
+    .badge-secondary {
+      border: 1px solid $border-color;
+    }
+  }
+}
+
+.filepicker-filelist .filepicker-container,
+.filemanager.fm-noitems .fm-empty-container,
+.filepicker-filelist.dndupload-ready .dndupload-target,
+.filemanager-container.dndupload-ready .dndupload-target {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  border-radius: $border-radius;
+  box-shadow: none;
+}
+
+.filepicker-filelist .filepicker-container,
+.filemanager.fm-noitems .fm-empty-container,
+.filepicker-filelist.dndupload-over .dndupload-target,
+.filemanager-container.dndupload-over .dndupload-target {
+  color: $purity-file-empty-container-color;
+  border-color: $purity-file-empty-container-border-color;
+  background-color: $purity-file-empty-container-background-color;
+}
+
+.filepicker-filelist .dndupload-target,
+.filemanager-container .dndupload-target {
+  color: $purity-file-target-container-color;
+  border-color: $purity-file-target-container-border-color;
+  background-color: $purity-file-target-container-background-color;
+}
+
+.file-picker .ygtvfocus, .filemanager .ygtvfocus {
+  background-color: transparent;
+}
+
+.filepicker-filelist {
+  margin: 1rem 0;
+
+  &.border {
+    border: none !important;
+  }
+}
+
+.dndupload-arrow {
+  display: none !important;
+}
+
+.filepicker {
+  .moodle-dialogue-bd {
+    height: auto !important;
+    background-color: $gray-100;
+  }
+}
+
+.file-picker {
+  .nav-pills {
+    .nav-item {
+      padding-right: 1rem;
+      margin-bottom: 0.75rem;
+
+      .fp-repo-icon {
+        margin: -3px 3px 0 0;
+      }
+    }
+  }
+
+  .fp-navbar {
+    border: none;
+    min-height: auto;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem !important;
+  }
+
+  .fp-content {
+    padding: 1rem 1.5rem;
+  }
+
+  .fp-formset {
+    padding: 0;
+  }
+}

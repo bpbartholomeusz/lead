@@ -1,0 +1,196 @@
+$section-padding: 3.5rem 0 !default;
+
+.is-frontpage {
+  .page-top {
+    padding: 1.5rem 0;
+  }
+
+  #page {
+    margin-top: 0;
+  }
+
+  #region-main {
+    > .card {
+      margin-top: $grid-gutter-width;
+    }
+  }
+}
+
+#page-mod-page-view {
+  .is-frontpage {
+    #region-main-settings-menu {
+      > div {
+        top: $grid-gutter-width;
+      }
+    }
+  }
+}
+
+.hide-main-content {
+  display: none !important;
+
+  .editing & {
+    display: flex !important;
+  }
+}
+
+// Override Card Header Title Color and Card Content Text Color
+[class^="fp-"] {
+  .block_with_controls {
+    .card-header {
+      .card-title {
+        color: $headings-color;
+      }
+  
+      .block-controls {
+        color: $body-color;
+      }
+    }
+  }
+
+  .block {
+    &.card {
+      .card {
+        color: $body-color;
+
+        h1, h2, h3, h4, h5, h6 {
+          color: $headings-color;
+        }
+      }
+    }
+  }
+}
+
+// Fullwidth section
+.fp-fullwidth {
+  background-color: $fp-fullwidth-bg-color;
+  background-repeat: $fp-fullwidth-bg-repeat;
+  background-size: $fp-fullwidth-bg-size;
+  background-position: $fp-fullwidth-bg-position;
+  background-attachment: $fp-fullwidth-bg-attachment;
+  color: $fp-fullwidth-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-fullwidth-heading-color;
+  }
+}
+
+// Intro section
+.fp-intro {
+  padding: $section-padding;
+  background-color: $fp-intro-bg-color;
+  background-repeat: $fp-intro-bg-repeat;
+  background-size: $fp-intro-bg-size;
+  background-position: $fp-intro-bg-position;
+  background-attachment: $fp-intro-bg-attachment;
+  color: $fp-intro-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-intro-heading-color;
+  }
+}
+
+// Feature section
+.fp-feature {
+  padding: $section-padding;
+  background-color: $fp-feature-bg-color;
+  background-repeat: $fp-feature-bg-repeat;
+  background-size: $fp-feature-bg-size;
+  background-position: $fp-feature-bg-position;
+  background-attachment: $fp-feature-bg-attachment;
+  color: $fp-feature-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-feature-heading-color;
+  }
+}
+
+// Utility section
+.fp-utility {
+  padding: $section-padding;
+  background-color: $fp-utility-bg-color;
+  background-repeat: $fp-utility-bg-repeat;
+  background-size: $fp-utility-bg-size;
+  background-position: $fp-utility-bg-position;
+  background-attachment: $fp-utility-bg-attachment;
+  color: $fp-utility-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-utility-heading-color;
+  }
+}
+
+// Extension section
+.fp-extension {
+  padding: $section-padding;
+  background-color: $fp-extension-bg-color;
+  background-repeat: $fp-extension-bg-repeat;
+  background-size: $fp-extension-bg-size;
+  background-position: $fp-extension-bg-position;
+  background-attachment: $fp-extension-bg-attachment;
+  color: $fp-extension-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-extension-heading-color;
+  }
+}
+
+// Additional section
+.fp-additional {
+  padding: $section-padding;
+  background-color: $fp-additional-bg-color;
+  background-repeat: $fp-additional-bg-repeat;
+  background-size: $fp-additional-bg-size;
+  background-position: $fp-additional-bg-position;
+  background-attachment: $fp-additional-bg-attachment;
+  color: $fp-additional-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-additional-heading-color;
+  }
+}
+
+// Prebottom section
+.fp-prebottom {
+  padding: $section-padding;
+  background-color: $fp-prebottom-bg-color;
+  background-repeat: $fp-prebottom-bg-repeat;
+  background-size: $fp-prebottom-bg-size;
+  background-position: $fp-prebottom-bg-position;
+  background-attachment: $fp-prebottom-bg-attachment;
+  color: $fp-prebottom-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-prebottom-heading-color;
+  }
+}
+
+// Bottom section
+.fp-bottom {
+  padding: $section-padding;
+  background-color: $fp-bottom-bg-color;
+  background-repeat: $fp-bottom-bg-repeat;
+  background-size: $fp-bottom-bg-size;
+  background-position: $fp-bottom-bg-position;
+  background-attachment: $fp-bottom-bg-attachment;
+  color: $fp-bottom-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-bottom-heading-color;
+  }
+}
+
+// Afterbottom section
+.fp-afterbottom {
+  padding: $section-padding;
+  background-color: $fp-afterbottom-bg-color;
+  background-repeat: $fp-afterbottom-bg-repeat;
+  background-size: $fp-afterbottom-bg-size;
+  background-position: $fp-afterbottom-bg-position;
+  background-attachment: $fp-afterbottom-bg-attachment;
+  color: $fp-afterbottom-text-color;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $fp-afterbottom-heading-color;
+  }
+}

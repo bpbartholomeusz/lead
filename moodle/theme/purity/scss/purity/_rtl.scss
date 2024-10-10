@@ -1,0 +1,77 @@
+.dir-rtl {
+  .uk-slideshow-items {
+    img.uk-cover {
+      top: auto;
+      right: auto;
+      transform: none;
+    }
+  }
+
+  .top-navigation.navbar-top .nav-item .dropdown-menu {
+    left: auto;
+  }
+
+  .top-navigation.navbar-top .nav-item .usermenu .dropdown-menu {
+    left: 0;
+  }
+
+  .dropdown-menu-right,
+  .popover {
+    right: auto !important;
+  }
+
+  .dropdown-menu {
+    right: 8px;
+  }
+
+  .maincalendar [data-region="view-selector"] {
+    position: relative;
+  }
+
+  .bs-popover-left, .bs-popover-auto[x-placement^="left"] {
+    margin-left: 0;
+    margin-right: .5rem;
+  }
+
+  .bs-popover-left > .arrow::after, .bs-popover-auto[x-placement^="left"] > .arrow::after {
+    left: auto;
+    right: 1px;
+    border-width: .5rem 0 .5rem .5rem;
+    border-left-color: #ffffff;
+  }
+
+  .bs-popover-left > .arrow::before, .bs-popover-auto[x-placement^="left"] > .arrow::before {
+    left: auto;
+    right: 0;
+    border-width: .5rem 0 .5rem .5rem;
+  }
+
+  .bs-popover-left > .arrow, .bs-popover-auto[x-placement^="left"] > .arrow {
+    left: auto;
+    right: calc(-.5rem - 1px);
+  }
+
+  .navbar-vertical .navbar-nav .nav-link[data-toggle="collapse"]::after {
+    content: "\f104";
+  }
+
+  .navbar-vertical .navbar-nav .nav-link[data-toggle="collapse"][aria-expanded="true"]::after {
+    transform: rotate(-90deg);
+  }
+
+  .course_category_tree .category > .info > .categoryname a::before {
+    display: none !important;
+  }
+
+  .course_category_tree .category > .info > .categoryname a::after {
+    content: "\f07b";
+    margin-left: 10px;
+    @if variable-exists(fa-style-family) {
+      font-family: $fa-style-family;
+    } @else {
+      font-family: "FontAwesome";
+    }
+    font-size: inherit;
+    color: inherit;
+  }
+}

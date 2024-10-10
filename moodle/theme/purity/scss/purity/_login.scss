@@ -1,0 +1,156 @@
+.pagelayout-login {
+  #page {
+    margin: 0;
+  }
+
+  #maincontent {
+    height: auto;
+  }
+
+  .login-lang-menu {
+    position: fixed;
+    top: 30px;
+
+    .dropdown-toggle {
+      padding: 0.5rem 1rem;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      background-color: $white;
+    }
+  }
+}
+
+.login-panel-left {
+  .login-lang-menu {
+    right: 30px;
+  }
+}
+
+.login-panel-right,
+.login-panel-center {
+  .login-lang-menu {
+    left: 30px;
+  }
+}
+
+#page-login-index {
+  .login-container {
+    max-width: 475px;
+  }
+}
+
+.login-container {
+  margin: 3rem auto;
+  padding: 3rem;
+  max-width: 800px;
+  background-color: $white;
+  border-radius: $card-border-radius;
+
+  .card {
+    margin: -3rem;
+  }
+
+  .login-panel-left &,
+  .login-panel-right & {
+    min-height: 100vh;
+    max-height: 100%;
+    border-radius: 0;
+
+    .card {
+      border-radius: 0;
+      min-height: 100vh;
+      max-height: 100%;
+    }
+  }
+
+  .login-panel-left & {
+    margin: 0 auto 0 0;
+  }
+
+  .login-panel-right & {
+    margin: 0 0 0 auto;
+  }
+
+  .card-header,
+  .card-body {
+    padding: 3rem;
+
+    @include media-breakpoint-down(sm) {
+      padding: 1.5rem;
+    }
+  }
+}
+
+.login-card {
+  .input-username-wrapper,
+  .input-password-wrapper {
+    position: relative;
+
+    &::before {
+      width: 20px;
+      @if variable-exists(fa-style-family) {
+        font-family: $fa-style-family;
+        font-weight: 600;
+      } @else {
+        font-family: "FontAwesome";
+      }
+      font-size: $font-size-base;
+      line-height: 1;
+      position: absolute;
+      top: calc( 50% - ( #{$font-size-base} / 2) );
+      left: 12.5px;
+      text-align: center;
+      color: inherit;
+      opacity: 0.5;
+      z-index: 2;
+    }
+
+    .form-control {
+      padding-left: 40px;
+    }
+  }
+
+  .input-username-wrapper {
+    &::before {
+      content: "\f007";
+    }
+  }
+
+  .input-password-wrapper {
+    &::before {
+      content: "\f084";
+    }
+
+    .show-password {
+      width: 30px;
+      height: 30px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      cursor: pointer;
+      background-color: rgba($info, 0.2);
+    }
+    .show-password-hidden {
+      background-color: $gray-200;
+    }
+  }
+
+  .forgetpass,
+  .allow-guests,
+  .identity-providers,
+  .create-account {
+    text-align: center;
+  }
+}
+
+.register-card {
+  .form-inline .form-control {
+    width: 100%;
+  }
+}

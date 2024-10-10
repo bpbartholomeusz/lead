@@ -1,0 +1,671 @@
+/* stylelint-disable function-url-scheme-blacklist */
+/* stylelint-disable declaration-no-important */
+/**
+ * @package    local_booking
+ * @author     Mustafa Hajjar (mustafahajjar@gmail.com)
+ * @copyright  BAVirtual.co.uk © 2021
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+/* Session Booking grid */
+.booking-table {
+    width: 100%;
+}
+.booking-table tr {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+}
+.posts_completed {
+    border-left: .3rem solid green !important;
+}
+.noposts_completed {
+    border-left: .3rem solid orange !important;
+}
+.not_completed {
+    border-left: .3rem solid red !important;
+}
+.booking-title {
+    width: 100%;
+}
+.booking-header {
+    text-align: center;
+}
+.booking-xsmall {
+    width: 20px;
+}
+.booking-small {
+    width: 30px;
+}
+.booking-med {
+    width: 60px;
+}
+.booking-big {
+    width: 75px;
+}
+.booking-xbig {
+    width: 100px;
+}
+.booking-xxbig {
+    width: 120px;
+}
+.booking-text-big {
+    padding: 10px;
+    width: 25%;
+}
+.booking-text {
+    font-style: italic;
+}
+.booking-text-med {
+    padding: 4px;
+    width: 500px;
+}
+.booking-text-small {
+    padding: 4px;
+    width: 140px;
+}
+.booking-truncate {
+    font-size: smaller;
+    font-weight: bold;
+    height: 30px;
+    max-width: 200px;
+    padding: 4px;
+    overflow: hidden;
+    text-align: left;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #000;
+}
+.booking-truncate a {
+    color: inherit;
+    text-decoration: none;
+}
+.session {
+    background-color: white;
+}
+.session-date {
+    display: block;
+    padding: 0;
+    margin: 0 0 0 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.session-graded {
+    background-color: cornflowerblue;
+}
+.session-booked {
+    background-color: green;
+}
+.session-tentative {
+    background-color: coral;
+}
+.session-objective-not-met {
+    background-color: purple;
+}
+.session-overdue {
+    display: block;
+    background-color: #f8f084;
+}
+.session-late {
+    display: block;
+    background-color: #f3a0a0;
+}
+.session-right {
+    float: right;
+}
+.session-posts {
+    margin: 0em;
+    font-size: xx-small;
+    vertical-align: middle;
+    color: black;
+}
+#exercise-session .fa-fw {
+    width: 5px;
+}
+
+/* Buttons */
+.session-button {
+    display: inline-flex;
+    align-items: center;
+    height: 26px;
+    width: 80px;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    border-radius: 5px;
+    border-width: 0px;
+    outline: 0;
+    float: right;
+    box-shadow: 0px 2px 2px lightgray;
+    transition: ease background-color 250ms;
+    cursor: pointer;
+}
+.session-button-grade {
+    background-color: #1565c0;
+}
+.session-button-grade:hover {
+    background-color: #0d47a1;
+}
+.session-button-book {
+    background-color: green;
+}
+.session-button-book:hover {
+    background-color: rgb(82, 110, 82);
+}
+.session-button-disabled {
+    background-color: darkgray;
+}
+.session-button-noshow {
+    margin-right: 5px;
+    width: 100px;
+    background-color: #c40a0a;
+}
+.session-button-noshow:hover {
+    background-color: #9b2828;
+}
+.session-button-cancel {
+    margin-right: 5px;
+    width: 100px;
+    background-color: #1565c0;
+}
+.session-button-cancel:hover {
+    background-color: #0d47a1;
+}
+.session-button-graduate {
+    background-color: black;
+}
+.session-button-graduate:hover {
+    background-color: rgb(64, 63, 63);
+}
+.session-button-confirm {
+    background-color: #1565c0;
+    width: 100px;
+    margin: 5px 10px 10px 20px;
+    display: inline-block;
+    align-items: center;
+    color: white;
+    padding: 5px 15px;
+    border-width: 0px;
+    outline: 0;
+    box-shadow: 0px 2px 2px lightgray;
+    transition: ease background-color 250ms;
+    cursor: pointer;
+}
+.session-button-confirm:hover {
+    background-color: #0d47a1;
+}
+.disabled-link {
+    pointer-events: none;
+}
+
+/* Session Booking: booking container interim step */
+.booking-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* profile */
+.sb_profile_tree {
+    column-count: 3;
+}
+.save-comment-button {
+    width: 25px;
+    color: grey;
+    background-color: white;
+    border-width: 0px;
+    display: inline-flex;
+    align-items: center;
+    outline: 0;
+    box-shadow: 2px 2px 2px 2px white;
+    transition: ease background-color 250ms;
+    cursor: pointer;
+}
+.comment-status {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+}
+.comment-status-success {
+    color: #357a32;
+}
+.comment-status-error {
+    color: darkred;
+}
+
+/* custom switch checkbox */
+.toggle-input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 1.25rem;
+    height: 1.328125rem;
+    opacity: 0;
+}
+.toggle-input:checked ~ .toggle-label::before {
+    color: #fff;
+    border-color: #0f6fc5;
+    background-color: #0f6fc5;
+}
+.toggle-input:focus ~ .toggle-label::before {
+    outline: none !important;
+}
+.toggle-input:focus:not(:checked) ~ .toggle-label::before {
+    border-color: #6a737b;
+}
+.toggle-input:not(:disabled):active ~ .toggle-label::before {
+    color: #fff;
+    background-color: #90c6f7;
+    border-color: #90c6f7;
+}
+.toggle-input[disabled] ~ .toggle-label,
+.toggle-input:disabled ~ .toggle-label {
+    color: #6a737b;
+}
+.toggle-input[disabled] ~ .toggle-label::before,
+.toggle-input:disabled ~ .toggle-label::before {
+    background-color: #e9ecef;
+}
+.toggle-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+.toggle-label::before {
+    position: absolute;
+    top: 0.078125rem;
+    left: -1.75rem;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    pointer-events: none;
+    content: "";
+    background-color: #fff;
+    border: #8f959e solid 1px;
+}
+.toggle-label::after {
+    position: absolute;
+    top: 0.078125rem;
+    left: -1.75rem;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    content: "";
+    background: 50% / 50% 50% no-repeat;
+}
+.custom-switch {
+    padding-left: 2.6875rem;
+}
+.custom-switch .toggle-label::before {
+    left: -2.6875rem;
+    width: 2.1875rem;
+    pointer-events: all;
+    border-radius: 0.625rem;
+}
+.custom-switch .toggle-label::after {
+    top: calc(0.078125rem + 2px);
+    left: calc(-2.6875rem + 2px);
+    width: calc(1.25rem - 4px);
+    height: calc(1.25rem - 4px);
+    background-color: #8f959e;
+    border-radius: 0.625rem;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.custom-switch .toggle-label::after {
+    transition: none;
+}
+.custom-switch .toggle-input:checked ~ .toggle-label::after {
+    background-color: #fff;
+    transform: translateX(0.9375rem);
+}
+.custom-switch .toggle-input:disabled:checked ~ .toggle-label::before {
+    background-color: rgba(15, 111, 197, 0.5);
+}
+
+/* Availability calendar */
+.availability-student {
+    font-size: small;
+}
+.slot-month-day {
+    border-top: 0;
+    font-weight: normal;
+}
+.slot-unavailable {
+    background-color: rgb(244, 243, 243);
+}
+.slot-selected {
+    background-color: #e9f3e9;
+}
+.slot-booked {
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+}
+.slot-tentative {
+    background-color: gray;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    color: black;
+}
+
+/* Availability posting buttons */
+.slot-button {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    width: 75px;
+    color: white;
+    font-size: smaller;
+    font-weight: bold;
+    padding: 5px 5px 5px 8px;
+    margin: 10px 0px 0px 0px;
+    border-radius: 5px;
+    border-width: 0px;
+    outline: 0;
+    float: right;
+    box-shadow: 0px 2px 2px lightgray;
+    transition: ease background-color 250ms;
+    cursor: pointer;
+}
+.slot-button-red {
+    background-color: #c40a0a;
+}
+.slot-button-red:hover {
+    background-color: #9b2828;
+}
+.slot-button-blue {
+    background-color: #1565c0;
+    transition: ease background-color 250ms;
+}
+.slot-button-blue:hover {
+    background-color: #0d47a1;
+}
+.slot-button-gray {
+    background-color: rgb(168, 167, 167);
+}
+.slot-button-black {
+    background-color: black;
+    transition: ease background-color 250ms;
+}
+.slot-button-black:hover {
+    background-color: darkgray;
+}
+
+/* availability calendar */
+.path-availability .slotcalendartable {
+    width: 100%;
+    table-layout: fixed;
+}
+.path-availability .slotcalendartable tr:not(:first-child):last-child td:not(:nth-child(1)):not(:nth-child(2)) {
+    border-bottom: 1px solid lightgrey;
+}
+.path-availability .slotcalendartable th,
+.path-availability .slotcalendartable td {
+    width: 14%;
+    vertical-align: top;
+    text-align: center;
+    border: 0;
+}
+.path-availability .slotcalendartable .zulutime,
+.path-availability .slotcalendartable .localtime {
+    width: 60px;
+    vertical-align: bottom;
+}
+.path-availability .slotcalendartable .localtimecol {
+    vertical-align: middle;
+    border: 0.1pt solid lightgrey;
+}
+.path-availability .slotcalendartable .zulutimecol {
+    vertical-align: middle;
+    border-top: 0.1pt solid lightgrey;
+    border-left: 0.1pt solid lightgrey;
+    border-bottom: 0.1pt solid lightgrey;
+    border-right: 1px solid lightgrey;
+}
+.path-availability .slotcalendartable .daynames {
+    border: 1px solid lightgrey;
+}
+.path-availability .slotcalendartable .zulutime {
+    color: rgb(122, 26, 26);
+}
+.path-availability .calendar-controls .previous,
+.path-availability .calendar-controls .next,
+.path-availability .calendar-controls .current {
+    display: block;
+    float: left;
+    width: 12%;
+}
+.path-availability .calendar-controls .previous {
+    text-align: left;
+    border: 1px solid transparent;
+}
+.path-availability .calendar-controls .current {
+    text-align: center;
+    width: 76%;
+}
+.path-availability .calendar-controls .next {
+    text-align: right;
+    border: 1px solid transparent;
+}
+.path-availability .maincalendar {
+    vertical-align: top;
+    padding: 0;
+}
+.path-availability .maincalendar .bottom {
+    text-align: center;
+    padding: 5px 0 0 0;
+}
+.path-availability .maincalendar .heightcontainer {
+    height: 100%;
+    position: relative;
+}
+.path-availability .maincalendar .calendarmonth {
+    width: 98%;
+    margin: 10px auto;
+}
+.path-availability .maincalendar .calendarmonth ul {
+    margin: 0;
+    padding: 0;
+}
+.path-availability .maincalendar .calendarmonth ul li {
+    list-style-type: none;
+}
+.path-availability .maincalendar .calendarmonth ul li > a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    display: inline-block;
+}
+.path-availability .maincalendar .calendarmonth ul li > a:hover {
+    text-decoration: none;
+}
+.path-availability .maincalendar .calendarmonth ul li > a:hover .eventname {
+    text-decoration: underline;
+}
+.path-availability .maincalendar .calendarmonth ul li .icon {
+    margin-left: 0.22em;
+    margin-right: 0.22em;
+    vertical-align: initial;
+}
+.path-availability .maincalendar .calendarmonth ul li .calendar-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    vertical-align: middle;
+    display: inline-block;
+}
+.path-availability .maincalendar .calendarmonth td {
+    height: 2em;
+}
+.path-availability .maincalendar .calendarmonth .zulutimeslot {
+    font-weight: bold;
+    font-size: smaller;
+}
+.path-availability .maincalendar .calendarmonth .clickable:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.path-availability .maincalendar .calendar-controls .previous,
+.path-availability .maincalendar .calendar-controls .next {
+    width: 30%;
+}
+.path-availability .maincalendar .calendar-controls .current {
+    width: 39.95%;
+}
+.path-availability .maincalendar .controls {
+    width: 98%;
+    margin: 10px auto;
+}
+.path-availability .maincalendar .slotcalendartable td,
+.path-availability .maincalendar .slotcalendartable li {
+    padding: 0 4px 4px 4px;
+}
+.path-availability .maincalendar .slotcalendartable li {
+    text-align: left;
+}
+.path-availability .maincalendar .header {
+    overflow: hidden;
+}
+.path-availability .maincalendar .header .buttons {
+    float: right;
+}
+.path-availability .maincalendar .event .card-header img {
+    vertical-align: baseline;
+}
+
+/* logbook */
+.logbook-body {
+    background: #fafafa;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+.logbook-h2 {
+    margin-top: 0;
+}
+.logbook-card {
+    padding: 40px;
+    background: #fff;
+    max-width: 1000px;
+    border-radius: 20px;
+    margin: 60px auto;
+}
+.logbook-easa-card {
+    padding: 20px;
+    background: #fff;
+    max-width: 1600px;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+table.logbook-easa {
+    table-layout: fixed;
+    width: 1450px;
+    font-size: x-small;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+table.dataTables thead .sorting:after,
+table.dataTables thead .sorting:before,
+table.dataTables thead .sorting_asc:after,
+table.dataTables thead .sorting_asc:before,
+table.dataTables thead .sorting_asc_disabled:after,
+table.dataTables thead .sorting_asc_disabled:before,
+table.dataTables thead .sorting_desc:after,
+table.dataTables thead .sorting_desc:before,
+table.dataTables thead .sorting_desc_disabled:after,
+table.dataTables thead .sorting_desc_disabled:before {
+    bottom: .5em;
+}
+table.dataTable td {
+    padding: 4px;
+}
+div.dataTables_wrapper div.dataTables_length label {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: small;
+}
+div.dataTables_wrapper div.dataTables_filter label {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: small;
+}
+div.dataTables_wrapper div.dataTables_info {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: smaller;
+}
+table.logbook-easa th {
+    font-size: x-small;
+    font-weight: normal;
+    padding-left: 5px;
+    background: #fafafa;
+    border-width: thin;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+table.logbook-easa td {
+    border-width: thin;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+table.logbook-easa td.border-less {
+    border-top: 0px solid #FFFFFF;
+    border-left: 0px solid #FFFFFF;
+    border-bottom: 0px solid #FFFFFF;
+    border-right: 0px solid #FFFFFF;
+}
+.logbook-check-pass {
+    color: green;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+.logbook-check-fail {
+    color: maroon;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+table.logbook-easa tbody {
+    font-size: x-small;
+}
+.logbook-highlight {
+    font-weight: bold;
+    color: #294;
+}
+.logbook-shadow1 {
+    box-shadow: 0 5px 10px rgba(154, 160, 185, .05), 0 15px 40px rgba(166, 173, 201, 0.2);
+}
+.logbook-shadow2 {
+    box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+}
+.logbook-title {
+    font-weight: bolder;
+}
+.logbook-mt1 {
+    color: cornflowerblue;
+}
+.logbook-remarks {
+    padding-left: 75px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.logbook-button {
+    font-size: large;
+    color: black;
+    background-color: white;
+    border-width: 0px;
+    display: inline-flex;
+    align-items: center;
+    outline: 0;
+    box-shadow: 2px 2px 2px 2px white;
+    transition: ease background-color 250ms;
+    cursor: pointer;
+}

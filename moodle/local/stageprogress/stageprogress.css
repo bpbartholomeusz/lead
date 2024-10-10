@@ -1,0 +1,18 @@
+#page-local-stageprogress-index .card-header {
+  color: #cb73b7;
+  font-size: 1.25rem;
+}
+
+#page-local-stageprogress-index .accordion ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.25rem;
+}
+
+#page-local-stageprogress-index .accordion ul li::marker {
+  content: '— ';
+}
+
+#page-local-stageprogress-index .accordion ul li > a > b {
+  color: #5e72e4 !important;
+}

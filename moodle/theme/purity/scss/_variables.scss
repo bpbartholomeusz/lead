@@ -1,0 +1,137 @@
+// Set defaults in case no value is available in the DB yet
+$purity-primary-color:			    	#5e72e4 !default;
+$purity-secondary-color:		    	#172b4d !default;
+$purity-body-bg-color:			     	#f8f9fe !default;
+$purity-gray-100:                 #f6f9fc !default;
+$purity-gray-200:                 #e9ecef !default;
+$purity-gray-300:                 #dee2e6 !default;
+$purity-gray-400:                 #ced4da !default;
+$purity-gray-500:                 #adb5bd !default;
+$purity-gray-600:                 #8898aa !default;
+$purity-gray-700:                 #525f7f !default;
+$purity-gray-800:                 #32325d !default;
+$purity-gray-900:                 #212529 !default;
+$purity-border-color:			      	#e9ecef !default;
+$purity-page-top-bg-color:		    #5e72e4 !default;
+$purity-page-top-text-color:		  #ffffff !default;
+$purity-body-font-family:         'Open Sans', sans-serif !default;
+$purity-headings-font-family:     'Open Sans', sans-serif !default;
+$purity-body-font-size:           1rem !default;
+$purity-h1-font-size:             1.625rem !default;
+$purity-h2-font-size:             1.25rem !default;
+$purity-h3-font-size:             1.0625rem !default;
+$purity-h4-font-size:             0.9375rem !default;
+$purity-h5-font-size:             0.8125rem !default;
+$purity-h6-font-size:             0.625rem !default;
+$purity-font-weight-light:		    300 !default;
+$purity-font-weight-normal:		    400 !default;
+$purity-font-weight-bold:		      600 !default;
+$purity-font-weight-extra-bold:		700 !default;
+$purity-menu-breakpoint:          992px !default;
+$fp-fullwidth-bg-color:           #f6f7f9 !default;
+$fp-fullwidth-bg-repeat:          no-repeat !default;
+$fp-fullwidth-bg-size:            auto !default;
+$fp-fullwidth-bg-position:        left top !default;
+$fp-fullwidth-bg-attachment:      scroll !default;
+$fp-fullwidth-text-color:         #525f7f !default;
+$fp-fullwidth-heading-color:      #32325d !default;
+$fp-intro-bg-color:               #ffffff !default;
+$fp-intro-bg-repeat:              no-repeat !default;
+$fp-intro-bg-size:                auto !default;
+$fp-intro-bg-position:            left top !default;
+$fp-intro-bg-attachment:          scroll !default;
+$fp-intro-text-color:             #525f7f !default;
+$fp-intro-heading-color:          #32325d !default;
+$fp-feature-bg-color:             #f6f7f9 !default;
+$fp-feature-bg-repeat:            no-repeat !default;
+$fp-feature-bg-size:              auto !default;
+$fp-feature-bg-position:          left top !default;
+$fp-feature-bg-attachment:        scroll !default;
+$fp-feature-text-color:           #525f7f !default;
+$fp-feature-heading-color:        #32325d !default;
+$fp-utility-bg-color:             #ffffff !default;
+$fp-utility-bg-repeat:            no-repeat !default;
+$fp-utility-bg-size:              auto !default;
+$fp-utility-bg-position:          left top !default;
+$fp-utility-bg-attachment:        scroll !default;
+$fp-utility-text-color:           #525f7f !default;
+$fp-utility-heading-color:        #32325d !default;
+$fp-extension-bg-color:           #f6f7f9 !default;
+$fp-extension-bg-repeat:          no-repeat !default;
+$fp-extension-bg-size:            auto !default;
+$fp-extension-bg-position:        left top !default;
+$fp-extension-bg-attachment:      scroll !default;
+$fp-extension-text-color:         #525f7f !default;
+$fp-extension-heading-color:      #32325d !default;
+$fp-additional-bg-color:          #ffffff !default;
+$fp-additional-bg-repeat:         no-repeat !default;
+$fp-additional-bg-size:           auto !default;
+$fp-additional-bg-position:       left top !default;
+$fp-additional-bg-attachment:     scroll !default;
+$fp-additional-text-color:        #525f7f !default;
+$fp-additional-heading-color:     #32325d !default;
+$fp-prebottom-bg-color:           #f6f7f9 !default;
+$fp-prebottom-bg-repeat:          no-repeat !default;
+$fp-prebottom-bg-size:            auto !default;
+$fp-prebottom-bg-position:        left top !default;
+$fp-prebottom-bg-attachment:      scroll !default;
+$fp-prebottom-text-color:         #525f7f !default;
+$fp-prebottom-heading-color:      #32325d !default;
+$fp-bottom-bg-color:              #ffffff !default;
+$fp-bottom-bg-repeat:             no-repeat !default;
+$fp-bottom-bg-size:               auto !default;
+$fp-bottom-bg-position:           left top !default;
+$fp-bottom-bg-attachment:         scroll !default;
+$fp-bottom-text-color:            #525f7f !default;
+$fp-bottom-heading-color:         #32325d !default;
+$fp-afterbottom-bg-color:         #f6f7f9 !default;
+$fp-afterbottom-bg-repeat:        no-repeat !default;
+$fp-afterbottom-bg-size:          auto !default;
+$fp-afterbottom-bg-position:      left top !default;
+$fp-afterbottom-bg-attachment:    scroll !default;
+$fp-afterbottom-text-color:       #525f7f !default;
+$fp-afterbottom-heading-color:    #32325d !default;
+
+
+// Set variables to their Theme Settings values
+$primary:			                    $purity-primary-color !default;
+$default:			                    $purity-secondary-color !default;
+$body-bg:			                    $purity-body-bg-color !default;
+$gray-100:		                    $purity-gray-100 !default;
+$gray-200:		                    $purity-gray-200 !default;
+$gray-300:		                    $purity-gray-300 !default;
+$gray-400:		                    $purity-gray-400 !default;
+$gray-500:		                    $purity-gray-500 !default;
+$gray-600:		                    $purity-gray-600 !default;
+$gray-700:		                    $purity-gray-700 !default;
+$gray-800:		                    $purity-gray-800 !default;
+$gray-900:		                    $purity-gray-900 !default;
+$border-color:			              $purity-border-color !default;
+$font-family-sans-serif:          $purity-body-font-family !default;
+$headings-font-family:            $purity-headings-font-family !default;
+$font-size-base:                  $purity-body-font-size !default;
+$h1-font-size:                    $purity-h1-font-size !default;
+$h2-font-size:                    $purity-h2-font-size !default;
+$h3-font-size:                    $purity-h3-font-size !default;
+$h4-font-size:                    $purity-h4-font-size !default;
+$h5-font-size:                    $purity-h5-font-size !default;
+$h6-font-size:                    $purity-h6-font-size !default;
+$font-weight-light:               $purity-font-weight-light !default;
+$font-weight-normal:              $purity-font-weight-normal !default;
+$font-weight-bold:                $purity-font-weight-bold !default;
+$font-weight-extra-bold:          $purity-font-weight-extra-bold !default;
+
+
+// Override framework variables
+$paragraph-font-weight:           $font-weight-normal !default;
+$paragraph-line-height:           1.5 !default;
+$btn-font-weight:                 $font-weight-bold !default;
+$paragraph-font-size:             $font-size-base !default;
+$navbar-nav-link-font-size:       ($font-size-base * .875) !default;  // $font-size-sm
+$btn-font-size:                   ($font-size-base * .875) !default;  // $font-size-sm
+$btn-font-size-sm:                ($font-size-base * .75) !default;  // $font-size-xs
+$input-btn-font-size:             ($font-size-base * .875) !default;  // $font-size-sm
+
+
+// Missing Variables (Moodle 3.10)
+$user-selects: all, auto, none !default;

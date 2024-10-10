@@ -1,0 +1,79 @@
+.modal {
+  overflow: visible;
+
+  .close {
+    padding: 0;
+    margin: 0;
+    width: 28px;
+    height: 28px;
+    background-color: $gray-100;
+    border-radius: $border-radius / 2;
+    opacity: 1;
+
+    &:hover {
+      background-color: $gray-200;
+    }
+
+    > span:not(.sr-only) {
+      width: auto;
+      height: auto;
+      line-height: inherit;
+    }
+  }
+}
+
+.modal-header {
+	align-items: center;
+  border-bottom-width: $border-width;
+  padding: 1.25rem 1.5rem;
+}
+
+.modal-content {
+  .list-group {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.modal-title {
+	font-size: $h3-font-size;
+}
+
+.modal-footer {
+	border-top-width: $border-width;
+}
+
+.modchooser {
+  .modal-body {
+    .carousel-item {
+      padding: 1.5rem !important;
+
+      .modchoosercontainer {
+        .searchcontainer {
+          margin-bottom: 1.5rem !important;
+        }
+      }
+    }
+
+    .optionsummary {
+      outline: none;
+
+      .heading {
+        h5 {
+          outline: none;
+        }
+      }
+
+      .description {
+        outline: none;
+      }
+
+      .content {
+        padding: 1.5rem !important;
+      }
+    }
+  }
+
+  .modal-footer {
+    height: auto;
+  }
+}

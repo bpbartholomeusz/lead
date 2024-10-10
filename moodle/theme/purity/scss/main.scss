@@ -1,0 +1,14 @@
+// Import Purity Variables
+@import "variables";
+
+// Import Framework (includes Bootstrap 4)
+@import "framework/framework";
+
+// Import FontAwesome.
+@import "../../boost/scss/fontawesome";
+
+// Import Core Moodle Styles
+@import "../../boost/scss/moodle";
+
+// Import Purity Styles
+@import "purity";

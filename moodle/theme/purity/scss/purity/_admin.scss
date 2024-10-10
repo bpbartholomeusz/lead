@@ -1,0 +1,93 @@
+#adminsettings {
+  h3 {
+    font-size: $h3-font-size;
+    margin-bottom: 2rem;
+    border-color: $card-border-color;
+  }
+
+  .form-label {
+    &.text-sm-right {
+      text-align: left !important;
+    }
+  }
+}
+
+// Admin Search
+.pagelayout-admin {
+  .mform {
+    .fitem {
+      &.femptylabel {
+        margin-left: 0;
+  
+        > div {
+          &:first-child {
+            display: none !important;
+          }
+  
+          &:last-child {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-item {
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+
+  .form-setting {
+    .form-defaultinfo {
+      font-size: 80%;
+      font-weight: $font-weight-bold;
+      background-color: $gray-100;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid $border-color;
+      border-radius: 30px;
+      margin-left: 10px;
+      line-height: 1;
+      letter-spacing: 0.1px;
+    }
+
+    .form-textarea + .form-defaultinfo,
+    .form-filemanager + .form-defaultinfo,
+    .form-select:not(.defaultsnext) + .form-defaultinfo {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+}
+
+.form-description {
+  font-size: 80%;
+
+  p {
+    font-size: inherit;
+  }
+
+  pre {
+    padding: 1rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background-color: #f8f8f8;
+    max-height: 350px;
+    white-space: pre-wrap;
+  }
+}
+
+.form-control-static {
+  padding: 1rem;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  background-color: #f8f8f8;
+  font-size: 80%;
+}
+
+.admin_colourpicker {
+  .colourdialogue,
+  .previewcolour,
+  .currentcolour {
+    border-color: $border-color;
+  }
+}

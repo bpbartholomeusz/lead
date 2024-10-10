@@ -1,0 +1,74 @@
+.nav-tabs {
+  border: 1px solid $border-color;
+  background-color: $white;
+  box-shadow: $purity-box-shadow;
+
+  @include media-breakpoint-down(sm) {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .nav-item {
+    margin-bottom: 0;
+    position: relative;
+
+    @include media-breakpoint-down(sm) {
+      flex: none;
+    }
+  }
+
+  .nav-link,
+  .responsivetabs-more .dropdown-toggle {
+    border: none;
+    border-right: 1px solid $border-color;
+    border-radius: 0;
+    display: block;
+    padding: 20px;
+    color: $body-color;
+    transition: background 0.2s;
+
+    @include media-breakpoint-down(sm) {
+      background-color: transparent;
+      margin: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-top: 3px solid transparent;
+
+    }
+
+    &:hover {
+      background-color: $purity-tab-hover-background-color;
+      border-color: $border-color;
+    }
+
+    &.active {
+      background-color: $white !important;
+      border-color: $border-color !important;
+
+      @include media-breakpoint-down(sm) {
+        color: $body-color !important;
+        background-color: $white !important;
+        border-color: $border-color !important;
+      }
+
+      &::before {
+        border-top-color: $primary;
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: 20px;
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+}

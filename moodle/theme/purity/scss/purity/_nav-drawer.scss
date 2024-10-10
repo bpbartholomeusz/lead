@@ -1,0 +1,141 @@
+$purity-navdrawer-dark-hover-background-color: rgba(255, 255, 255, 0.2) !default;
+
+#nav-drawer {
+  padding: 0;
+  height: 100%;
+  outline: none;
+  max-width: $purity-nav-drawer-max-width;
+
+  &.navbar {
+    max-height: none;
+  }
+
+  .navdrawer-header {
+    padding: 1.25rem 1.5rem;
+
+    .logo {
+      display: inline-block;
+      
+      > img {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .navdrawer-navigation {
+    margin-top: 15px;
+  }
+
+  .list-group {
+
+    li {
+      margin: 0;
+    }
+  }
+
+  .list-group-item {
+    border: none;
+    border-radius: 0;
+  }
+
+  &.navbar-light {
+    .navbar-nav {
+      .nav-link {
+        &:not(.active) {
+          &:hover {
+            color: $primary;
+          }
+        }
+
+        &.active {
+          background-color: $gray-100;
+        }
+      }
+    }
+  }
+
+  &.navbar-dark {
+    .navbar-nav {
+      .nav-link {
+        &:not(.active) {
+          &:hover {
+            .icon {
+              color: rgba(255,255,255,.65) !important;
+            }
+          }
+        }
+
+        &.active {
+          background-color: $purity-navdrawer-dark-hover-background-color;
+        }
+      }
+    }
+
+    hr {
+      border-color: $navbar-dark-border-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      font-weight: $font-weight-bold;
+
+      .icon {
+        margin-right: 0.8rem;
+        transition: color 0.2s;
+      }
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  #nav-drawer {
+    .navbar-nav {
+      .nav-link {
+        position: relative;
+        display: block;
+
+        &:after {
+          position: absolute;
+          top: 10px;
+          right: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.navbar-vertical {
+  .navbar-nav {
+    .nav-link {
+      &[data-toggle="collapse"] {
+        &::after {
+          @if variable-exists(fa-style-family) {
+            font-family: $fa-style-family;
+          } @else {
+            font-family: "FontAwesome";
+          }
+        }
+      }
+    }
+  }
+
+  &.navbar-expand-xs {
+    .navbar-nav {
+      .nav {
+        .nav-item {
+          .nav-link {
+            padding-left: 2rem;
+
+            &.active {
+              margin-right: .5rem;
+              margin-left: .5rem;
+              padding-left: 1.5rem;
+              border-radius: $border-radius;
+            }
+          }
+        }
+      }
+    }
+  }
+}

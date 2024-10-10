@@ -1,0 +1,124 @@
+.plans-section {
+  .plans-header {
+    font-size: 2.25rem;
+  }
+
+  .bg-light-pink {
+    background-color: #ac4b98;
+  }
+
+  .text-light-pink {
+    color: #ac4b98 !important;
+  }
+
+  .bg-dark-pink {
+    background-color: #4a2c4b;
+  }
+
+  .text-dark-pink {
+    color: #4a2c4b !important;
+  }
+
+  .plans-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    #corporate-plan {
+      order: -1;
+    }
+
+    header {
+      font-size: 2rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(1fr, 330px));
+      min-height: 30rem;
+      padding: 2rem;
+
+      #individual-plan,
+      #school-plan {
+        grid-row: span 4 / 5;
+        min-height: calc(4rem - 6px);
+
+        header {
+          border: 1px solid #ac4b98;
+        }
+      }
+
+      #corporate-plan {
+        order: 0;
+        grid-row: span 5 / 5; /* Make this card taller by spanning two rows */
+        header {
+          border: 1px solid #4a2c4b;
+        }
+
+        .plan-body {
+          border-right: none;
+          border-left: none;
+        }
+      }
+    }
+
+    .plan-card {
+      transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+      background: white;
+      min-height: 50dvh;
+      position: relative;
+
+      .plan-body {
+        border: 1px solid lightgray;
+        border-top: none;
+        flex: 1;
+        background-color: white;
+
+        p,
+        ul li {
+          font-size: 0.875rem !important;
+        }
+
+        ul {
+          color: #ac4b98;
+          font-weight: 600;
+          padding-left: 1.5rem;
+          margin-top: 1.75rem !important;
+        }
+      }
+
+      .most-popular {
+        background-color: #d62125;
+      }
+
+      @media screen and (min-width: 1024px) {
+        min-height: unset;
+
+        &:hover {
+          transform: scale(1.05) translateZ(1rem); /* Scales up and moves card towards the viewer */
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+          z-index: 2;
+        }
+      }
+    }
+  }
+
+  .plans-footer-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    min-width: 12rem;
+    display: inline-grid;
+    place-content: center;
+    background-color: #d62125;
+    color: white;
+    font-weight: 600;
+    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+    font-style: italic;
+
+    &:hover {
+      color: white !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
+}

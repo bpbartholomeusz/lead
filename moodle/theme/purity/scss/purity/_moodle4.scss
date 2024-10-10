@@ -1,0 +1,521 @@
+#goto-top-link {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .7s ease 0s, visibility .1s ease .8s;
+    display: block;
+    position: fixed;
+    a {
+        position: absolute;
+        right: 0;
+        transform: translateY(-100%);
+    }
+}
+
+body.scrolled #goto-top-link {
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0s ease 0s, opacity .7s ease .1s;
+}
+
+.path-calendar .calendartable th {
+  text-align: center;
+}
+
+#region-main .maincalendar .calendarwrapper td > div {
+  height: auto;
+}
+
+.path-calendar .maincalendar .calendarmonth .clickable:hover {
+  background-color: transparent;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.path-course-index {
+  #region-main {
+    .tertiary-navigation {
+      padding-top: 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid $card-border-color;
+      padding: $card-spacer-y $card-spacer-x;
+      margin: (-$card-spacer-x) (-$card-spacer-x) 2rem;
+
+      &.container-fluid {
+        width: auto;
+
+        > .row {
+          margin: 0;
+        }
+      }
+
+      .navitem {
+        margin-bottom: 0;
+
+        div.simplesearchform {
+          padding: 0;
+          margin: 0;
+          border: 0;
+        }
+      }
+
+      > .row {
+        > .d-flex {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// Fix for Moodle 4.4
+$card-gutter: 30px;
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.dashboard-card-deck.one-row {
+  flex-flow: nowrap;
+  overflow-x: scroll;
+}
+
+.summaryimage {
+  height: 5rem;
+  width: 5rem;
+  background-position: center;
+  background-size: cover;
+}
+.dashboard-list-img {
+  height: 5rem;
+  width: 20rem;
+  background-position: center;
+  background-size: cover;
+  @include media-breakpoint-down(lg) {
+      width: 100%;
+  }
+}
+
+.dashboard-card-deck {
+  .dashboard-card {
+      margin-bottom: $card-gutter;
+      flex-basis: auto;
+      width: 100%;
+      flex-grow: 0;
+      flex-shrink: 0;
+      .dashboard-card-img {
+          background-position: center;
+          background-size: cover;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+      }
+      .dashboard-card-footer {
+          padding: 0.8rem;
+      }
+  }
+  @include media-breakpoint-up(sm) {
+      &.fixed-width-cards {
+          .dashboard-card {
+              width: 300px;
+              max-width: 100%;
+          }
+      }
+  }
+}
+
+.dashboard-card-deck:not(.fixed-width-cards) {
+  @media (min-width: 576px) {
+      .dashboard-card {
+          width: calc(50% - #{$card-gutter});
+      }
+  }
+  @media (min-width: 840px) {
+      .dashboard-card {
+          width: calc(33.33% - #{$card-gutter});
+      }
+  }
+}
+
+#block-region-side-pre {
+  .dashboard-card-deck:not(.fixed-width-cards) {
+      margin-left: 0;
+      margin-right: 0;
+      .dashboard-card {
+          width: calc(100% - #{$card-gutter}) !important;
+          @include media-breakpoint-down(xs) {
+              width: 100% !important;
+          }
+      }
+  }
+}
+
+#block-region-side-pre {
+  .block_recentlyaccessedcourses {
+      .paging-bar-container {
+          margin-top: 0;
+      }
+  }
+}
+
+.block_recentlyaccesseditems {
+  .activityiconcontainer {
+      width: 40px;
+      height: 40px;
+  }
+
+  aside[id^="block-region-side-"] & .dashboard-card-deck.one-row {
+      flex-flow: wrap;
+      overflow-x: hidden;
+  }
+
+  aside[id^="block-region-side-"] & .dashboard-card-deck .card:nth-of-type(n+4) {
+      display: none;
+  }
+
+  #block-region-content & [data-region="more-items-button-container"] {
+      display: none;
+  }
+
+  a.dashboard-card {
+      @include hover-focus {
+          text-decoration: none;
+          h6 {
+              text-decoration: underline;
+          }
+      }
+      small {
+          color: $body-color;
+      }
+  }
+}
+// End Fix for Moodle 4.4
+
+.dashboard-card-deck:not(.fixed-width-cards) {
+  @media (min-width: 576px) {
+      .dashboard-card {
+          width: calc(50% - #{$card-gutter});
+      }
+  }
+  @media (min-width: 840px) {
+      .dashboard-card {
+          width: calc(33.33% - #{$card-gutter});
+      }
+  }
+  @media (min-width: 1100px) {
+      .dashboard-card {
+          width: calc(25% - #{$card-gutter});
+      }
+  }
+  @media (min-width: 1360px) {
+      .dashboard-card {
+          width: calc(20% - #{$card-gutter});
+      }
+  }
+}
+
+#region-main.has-blocks {
+  .dashboard-card-deck:not(.fixed-width-cards) {
+      @media (min-width: 1200px) {
+          .dashboard-card {
+              width: calc(33.33% - #{$card-gutter});
+          }
+      }
+      @media (min-width: 1470px) {
+          .dashboard-card {
+              width: calc(25% - #{$card-gutter});
+          }
+      }
+  }
+}
+
+body.drawer-open-left {
+  .dashboard-card-deck:not(.fixed-width-cards) {
+      @media (min-width: 768px) {
+          .dashboard-card {
+              width: calc(100% - #{$card-gutter});
+          }
+      }
+      @media (min-width: 861px) {
+          .dashboard-card {
+              width: calc(50% - #{$card-gutter});
+          }
+      }
+      @media (min-width: 1122px) {
+          .dashboard-card {
+              width: calc(33.33% - #{$card-gutter});
+          }
+      }
+      @media (min-width: 1381px) {
+          .dashboard-card {
+              width: calc(25% - #{$card-gutter});
+          }
+      }
+  }
+}
+
+body.drawer-open-left #region-main.has-blocks {
+  .dashboard-card-deck:not(.fixed-width-cards) {
+      @media (min-width: 1200px) {
+          .dashboard-card {
+              width: calc(100% - #{$card-gutter});
+          }
+      }
+      @media (min-width: 1236px) {
+          .dashboard-card {
+              width: calc(50% - #{$card-gutter});
+          }
+      }
+      @media (min-width: 1497px) {
+          .dashboard-card {
+              width: calc(33.33% - #{$card-gutter});
+          }
+      }
+  }
+}
+
+@media (min-width: 1200px) {
+  #block-region-side-pre {
+      .dashboard-card-deck:not(.fixed-width-cards) {
+          margin-left: 0;
+          margin-right: 0;
+          .dashboard-card {
+              width: calc(100% - #{$card-gutter}) !important;
+          }
+      }
+  }
+}
+
+.add_block_button {
+  display: none !important;
+}
+
+.page-context-header {
+  display: block;
+
+  .page-header-image,
+  .page-header-headings {
+    float: left;
+    display: block;
+    position: relative;
+  }
+
+  .page-header-image {
+    margin-right: 1rem;
+  }
+}
+
+#page-admin-reportbuilder-index {
+  #region-main {
+    [role="main"] {
+      > .d-flex {
+        display: block !important;
+      }
+    }
+  }
+}
+
+.block .block-cards .course-info-container .coursename, .block .block-cards .course-listitem .coursename, .block .block-cards .course-summaryitem .coursename, .block .block-cards a.coursename, .block .block-cards span.categoryname, .block .block-cards .btn-link {
+  color: inherit;
+}
+
+#block-region-side-pre {
+  .block_calendar_month {
+    .calendar-controls {
+      .current {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .calendarmonth {
+      .header {
+        font-size: .8em;
+        line-height: 35px;
+        padding-bottom: 5px !important;
+      }
+    }
+
+    .footer {
+      .footer-link {
+        display: block;
+        margin-top: 15px;
+        
+        &::after {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+.search-secondary-navigation-wrapper {
+  display: none;
+
+  .simplesearchform.justify-content-end {
+    justify-content: flex-start !important;
+  }
+
+  .secondary-navigation {
+    padding: 0;
+
+    .navigation,
+    .nav-tabs {
+      background-color: transparent;
+    }
+
+    .navigation {
+      opacity: 1;
+      border: none !important;
+    }
+
+    .nav-tabs {
+      border: 1px solid $border-color;
+    }
+  }
+
+  #page-admin-search & {
+    display: block;
+  }
+}
+
+.pagelayout-login #page {
+  background: none;
+  background-image: none;
+}
+
+.card-header {
+  &:first-child {
+    border-top-right-radius: $card-inner-border-radius;
+  }
+}
+
+.badges-controlmenu-wrapper {
+  margin-right: 20px;
+}
+
+.badges-controlmenu-wrapper,
+.activity-item  {
+  .action-menu {
+    .dropdown-toggle {
+      background-color: $purity-gray-200;
+
+      .icon {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.course-content .section .quickeditlink {
+  margin: 0;
+
+  .quickediticon {
+    margin-left: 0.5rem;
+  }
+}
+
+.course-content .section .accordion .sectionname {
+  align-self: center;
+}
+
+.activity .activityiconcontainer.courseicon .activityicon {
+  margin: 0;
+}
+
+.description .course-description-item {
+  background: none;
+}
+
+.activity-item {
+  .activity-basis {
+    > .flex-column {
+      flex-direction: row !important;
+    }
+  }
+
+  .activity-info,
+  .activity-actions {
+    align-self: center !important;
+    margin: 0 20px 0 auto !important;
+  }
+}
+
+.course-content ul.section li.activity {
+  border-top: 0;
+  padding: 10px 0;
+}
+
+.editing .section .activity:hover,
+.editing .section .activity.action-menu-shown {
+  background: none;
+}
+
+.editing .activity-item:hover a {
+  color: inherit;
+  font-weight: $font-weight-normal;
+}
+
+#changenumsections {
+  border: none;
+}
+
+.course-content-item-content .mdl-right {
+  text-align: left;
+}
+
+.course-content { 
+  .single-section {
+    margin-top: -1rem;
+
+    .section-navigation {
+      align-items: center;
+    }
+
+    .prevsection,
+    .nextsection {
+      font-weight: $font-weight-bold;
+      .larrow,
+      .rarrow {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.coursebox > .info > .coursename {
+  font-weight: $font-weight-bold;
+
+  a {
+    padding: 0;
+  }
+}
+
+.category-browse .coursebox {
+  margin-bottom: 20px;
+
+  .content {
+    .courseimage {
+      margin-top: 15px;
+    }
+
+    .summary {
+      margin-top: 10px;
+    }
+  }
+}
+
+.block .block-cards .dashboard-card-footer.menu {
+  opacity: 1;
+}
+
+.block .block-cards .btn.btn-link.btn-icon {
+  background-color: $purity-gray-200;
+
+  &:hover,
+  &:focus {
+    box-shadow: $btn-hover-box-shadow;
+  }
+}
+
+// Issue present in Moodle 3.x as well
+.message-app .list-group .list-group-item:hover {
+  color: inherit;
+}
