@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLDB PATH="local/event_registration/db" VERSION="2023101600" COMMENT="Table for storing event registrations" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moodle.org/xmldb/1.xsd">
+    <!-- Define the table -->
+    <TABLES>
+        <TABLE NAME="event_registrations" COMMENT="Stores user registrations for calendar events">
+            <FIELDS>
+                <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true" COMMENT="Primary key, auto incrementing"/>
+                <FIELD NAME="userid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the user who registered"/>
+                <FIELD NAME="eventid" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="ID of the event"/>
+                <FIELD NAME="timecreated" TYPE="int" LENGTH="10" NOTNULL="true" COMMENT="Timestamp of when the user registered"/>
+            </FIELDS>
+            <KEYS>
+                <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+                <KEY NAME="unique_registration" TYPE="unique" FIELDS="userid,eventid"/>
+            </KEYS>
+        </TABLE>
+    </TABLES>
+</XMLDB>

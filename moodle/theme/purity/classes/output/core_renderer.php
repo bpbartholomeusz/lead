@@ -772,7 +772,13 @@ class core_renderer extends \core_renderer {
       }
     }
    
-    public function is_guest_user() {
-        return isguestuser();
+    public function is_user_enrolled() {
+       global $USER;
+
+       $courses = enrol_get_users_courses($USER->id);
+
+// Determine if the user is enrolled in any courses
+$is_enrolled = !empty($courses);
+        return $is_enrolled;
     }
 }

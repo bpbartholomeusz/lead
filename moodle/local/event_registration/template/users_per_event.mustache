@@ -1,0 +1,26 @@
+<div class="users-list">
+    <h2>Registered Users for Event ID: {{eventid}}</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#users}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{fullname}}</td>
+                    <td>{{email}}</td>
+                </tr>
+            {{/users}}
+            {{^users}}
+                <tr>
+                    <td colspan="3">No users registered for this event.</td>
+                </tr>
+            {{/users}}
+        </tbody>
+    </table>
+</div>

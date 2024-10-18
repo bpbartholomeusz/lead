@@ -17,15 +17,65 @@
 {{!
     Page navbar.
 }}
-{{# output.is_guest_user }}
-    <!-- HTML or link that should be shown to guest users -->
-   <!-- <p>Welcome, Guest!</p> -->
-{{/ output.is_guest_user }}
 
-{{^ output.is_guest_user }}
-    <!-- HTML or link that should be hidden from guest users -->
-    <!-- <a href="your-link">Exclusive Content for Logged-in Users</a> -->
-{{/ output.is_guest_user }}
+<div id="isuserenrolled" data-enrolled="{{ output.is_user_enrolled }}"></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the enrollment status from the data attribute
+        var isuserenrolled = document.getElementById('isuserenrolled');
+        var isEnrolled = isuserenrolled.getAttribute('data-enrolled') === '1';  // Convert string to boolean
+var mpachublink = document.getElementById('drop-down-670886e8bdbcd');
+        // If the user is not enrolled, disable the link
+        if (!isEnrolled) {
+            
+            var linkTextToDisable = "MPAC Hub";
+
+    // Get all links with the class 'nav-link'
+    var links = document.querySelectorAll('.nav-link');
+
+    // Loop through all links to find the one with the specific text
+    links.forEach(function(link) {
+        // Check if the link's text matches the desired text
+        if (link.textContent.trim() === linkTextToDisable) {
+            // Disable the link: change href, style, and prevent interaction
+            link.setAttribute('href', '#');
+            link.classList.add('disabled-link');
+            link.style.color = 'gray';  // Change text color to indicate disabled state
+          
+              var parentElement = link.parentElement;
+
+    console.log(parentElement); // Output: <div id="parent">...</div> 
+              parentElement.addEventListener('click', function(event) {
+            // Check if the link is disabled
+            if (link.classList.contains('disabled-link')) {
+                // Prevent the default action (i.e., navigation)
+                event.preventDefault();
+                
+                // Show an alert message when a disabled link is clicked
+                alert('This link is disabled because you are not enrolled.');
+            }
+        });
+
+
+           }
+         
+    });
+
+
+        }
+    });
+</script>
+
+<style>
+    .disabled-link {   
+        opacity: 0.5;
+        color: gray;
+        cursor: not-allowed;
+    }
+</style>
+
+
 <div class="topbar navbar {{#header_light}}navbar-light bg-white{{/header_light}}{{#header_dark}}navbar-dark bg-default{{/header_dark}}">
     {{# topbar_left_content }}
     <div class="topbar-left">

@@ -1,0 +1,51 @@
+#page-local-impact_network-index .dataTable {
+  margin-bottom: 0 !important;
+}
+
+#page-local-impact_network-index .dataTable th {
+  font-size: 0.875rem !important;
+  border-bottom: none !important;
+}
+
+#page-local-impact_network-index .dataTable th,
+#page-local-impact_network-index .dataTable td {
+  padding: 0.75rem !important;
+  vertical-align: middle;
+}
+
+#page-local-impact_network-index .dataTable td > ul {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#page-local-impact_network-index .dataTable tr.dt-hasChild + tr {
+  background: #4c2c4b;
+}
+
+#page-local-impact_network-index .dataTable td > ul > li {
+  list-style: none;
+}
+
+#page-local-impact_network-index .dataTable td > ul > li > a {
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  padding: 0.25rem 0.75rem;
+  color: #ffffffa6 !important;
+  transition: background-color 0.2s;
+}
+
+#page-local-impact_network-index .dataTable td > ul > li > a:hover {
+  background-color: #ffffff33;
+}
+
+#page-local-impact_network-index td .btn:first-child {
+  margin-right: 0;
+}
+
+#page-local-impact_network-index td .btn {
+  min-width: 70px;
+}

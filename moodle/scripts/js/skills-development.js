@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const urlParams = new URLSearchParams(window.location.search);
   const SELECTED_SKILL = urlParams.get('skill') || 'All Skills';
-  console.log({ SELECTED_SKILL });
-  console.log({ SELECTED_CATEGORY });
+  // console.log({ SELECTED_SKILL });
+  // console.log({ SELECTED_CATEGORY });
 
-  document.querySelector('h1').textContent = SELECTED_SKILL;
+  document.querySelector('h1')?.textContent = SELECTED_SKILL;
 });

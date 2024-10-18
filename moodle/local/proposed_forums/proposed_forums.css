@@ -1,0 +1,14 @@
+.dataTable {
+  margin-bottom: 0 !important;
+}
+
+.dataTable th {
+  font-size: 0.875rem !important;
+  border-bottom: none !important;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 0.75rem !important;
+  vertical-align: middle;
+}

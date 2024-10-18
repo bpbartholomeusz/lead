@@ -28,11 +28,7 @@ $CFG->admin     = 'admin';
 $CFG->sslproxy = true;
 $CFG->directorypermissions = 0777;
 
-//$CFG->alternative_file_system_class = '\\tool_objectfs\\s3_file_system';
-//$CFG->tool_objectfs_s3_key = 'AKIA47CRWVFCB6GGBW4I';
-//$CFG->tool_objectfs_s3_secret = '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';
-//$CFG->tool_objectfs_s3_bucket = 'leadmoodle-site-storage';
-//$CFG->tool_objectfs_s3_region = 'eu-west-2';
+
 
 require_once(__DIR__ . '/lib/setup.php');
 

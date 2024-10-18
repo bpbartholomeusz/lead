@@ -31,6 +31,8 @@
     {
     }
 }}
+   <input type="hidden" id="current_event_id"/>
+   <input type="hidden" id="current_event_type"/>
 <div class="card-text content calendarwrapper"{{!
     }} id="month-upcoming-mini-{{uniqid}}"{{!
     }} data-context-id="{{defaulteventcontext}}"{{!
@@ -40,7 +42,7 @@
     {{> core/overlay_loading}}
     {{#events}}
         <div{{!
-            }} class="event d-flex border-bottom pt-2 pb-3"{{!
+            }} class="event event-upc d-flex border-bottom pt-2 pb-3" {{!
             }} data-eventtype-{{normalisedeventtype}}="1"{{!
             }} data-region="event-item"{{!
         }}>
@@ -66,6 +68,19 @@
                     }}>{{{name}}}</a>
                 </h6>
                 <div class="date small">{{{formattedtime}}}</div>
+
+    <!-- Your element or content here -->
+       <div class="float-left event-type-link-{{normalisedeventtype}}">
+
+<a{{!
+                        }} class=""{{!
+                        }} target="_blank"{{!
+                        }} href="/local/event_registration/list.php?eventid={{id}}"{{!
+                        }} title="participants"{{!
+                    }}>See participants</a>
+
+</div>
+             
             </div>
         </div>
     {{/events}}
@@ -112,4 +127,12 @@ require([
         transitionPromise.resolve();
     });
 });
+
+
 {{/js}}
+
+<style>
+  .event-type-link-course {
+	display:none;
+  }
+</style>

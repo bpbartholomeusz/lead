@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   function joinGroup(groupId) {
     if (!CURRENT_USER_ID) {
       // Redirect to login pag
-      const loginUrl = `https://moodle.leadcurriculum.cloud/login/index.php`;
+      const loginUrl = `${window.location.origin}/login/index.php`;
       window.location.href = loginUrl;
       return;
     }
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!data) {
           setTimeout(() => {
             window.location.href =
-              'https://moodle.leadcurriculum.cloud/message/index.php';
+              window.location.origin + '/message/index.php';
           }, 500);
         }
       })

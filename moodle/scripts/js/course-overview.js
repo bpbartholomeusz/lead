@@ -133,9 +133,9 @@ function renderCourses(courses) {
               </div>
             </div>
             <div class="courser-footer">
-              <a href="https://moodle.leadcurriculum.cloud/course/view.php?id=${
-                course.id
-              }" class="uppercase">Enrol now</a>
+              <a href="${window.location.origin}/course/view.php?id=${
+      course.id
+    }" class="uppercase">Enrol now</a>
             </div>
            </div>
       `;
@@ -252,7 +252,8 @@ async function fetchEnrolledUsersCount(courseIds) {
 
     // Define the API endpoint
     const url =
-      'https://moodle.leadcurriculum.cloud/scripts/api/get_courses_enrolled_users_count.php';
+      window.location.origin +
+      '/scripts/api/get_courses_enrolled_users_count.php';
 
     // Make the POST request
     const response = await fetch(url, {
