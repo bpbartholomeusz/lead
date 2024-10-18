@@ -1,0 +1,210 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_booking/student_profile
+
+    Log book view for summary and log book entries.
+
+    The purpose of this template is to render the main, detailed weekly view.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Example context (json):
+    {
+    }
+}}
+<div id="user-profile-{{uniqid}}">
+    <div class="userprofile userprofilewrapper"
+        data-courseid="{{courseid}}"
+        data-userid="{{userid}}"
+        data-onholdgroup="{{onholdgroup}}"
+        data-keepactivegroup="{{keepactivegroup}}"
+        data-endorser="{{endorser}}"
+        data-endorsername="{{endorsername}}">
+        <div class="sb_profile_tree">
+            {{! PROFILE SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    <h3 class="lead">{{#str}} profile {{/str}}</h3>
+                    <dl><dt>{{#str}} name {{/str}}</dt><dd>{{fullname}}</dd></dl>
+                    <dl><dt>{{#str}} timezone {{/str}}</dt><dd>{{timezone}}</dd></dl>
+                    <dl><dt>{{#str}} fleet , local_booking {{/str}}</dt><dd>{{fleet}}</dd></dl>
+                    <dl><dt>{{#str}} sim1 , local_booking {{/str}}</dt><dd>{{sim1}}</dd></dl>
+                    <dl><dt>{{#str}} sim2 , local_booking {{/str}}</dt><dd>{{sim2}}</dd></dl>
+                    <span><a href="{{moodleprofileurl}}">{{#str}} moodleprofile , local_booking {{/str}}</a></span>
+                </div>
+            </section>
+            {{! SCORE SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    <h3 class="lead">{{#str}} score , local_booking {{/str}}</h3>
+                    <dl><dt>{{#str}} recency , local_booking {{/str}}</dt><dd>{{recency}} {{#str}} daysback , local_booking {{/str}}</dd></dl>
+                    <dl><dt>{{#str}} courseactivity , local_booking {{/str}}</dt><dd>{{courseactivity}} {{#str}} pageviews , local_booking {{/str}}</dd></dl>
+                    <dl><dt>{{#str}} slotsactive , local_booking {{/str}}</dt><dd>{{slots}}</dd></dl>
+                    <dl><dt>{{#str}} modulescompleted , local_booking {{/str}}</dt><dd>{{modulescompleted}}</dd></dl>
+                </div>
+            </section>
+            {{! COURSE ACTIVITY SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    <h3 class="lead">{{#str}} courseactivity , local_booking {{/str}}</h3>
+                    <dl><dt>{{#str}} enroldate , local_booking {{/str}}</dt><dd>{{enroldate}}</dd></dl>
+                    <dl><dt>{{#str}} lastlogin {{/str}}</dt><dd>{{lastlogin}}</dd></dl>
+                    <dl><dt>{{#str}} lastgraded , local_booking{{/str}}</dt><dd>{{lastgraded}}</dd></dl>
+                    <dl><dt>{{#str}} lastlesson , local_booking {{/str}}</dt><dd>{{lastlesson}}</dd></dl>
+                    <dl><dt>{{#str}} noshows , local_booking {{/str}}</dt><dd>{{{noshows}}}</dd></dl>
+                </div>
+            </section>
+            {{! COURSE COMPLETION SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    <h3 class="lead">{{#str}} coursecompletion {{/str}}</h3>
+                    <dl>
+                        <dt>{{#str}} status {{/str}}</dt>
+                        <dd>
+                            {{graduationstatus}}
+                        </dd>
+                    </dl>
+                    {{#requiresevaluation}}
+                    <dl>
+                        <dt>{{#str}} endorsement , local_booking {{/str}}</dt>
+                        <dd>
+                            {{#qualified}}
+                            <div id="endorse-region" class="custom-control custom-switch">
+                                <input type="checkbox" class="toggle-input" id="endorse" {{#endorsed}}checked{{/endorsed}} {{#endorsementlocked}}disabled{{/endorsementlocked}}>
+                                <label id="endorsement-label" class="toggle-label" for="endorse">{{endorsementmgs}}</label>
+                                {{> core/overlay_loading}}
+                            </div>
+                            <div id="endorsement-letter" class="{{^endorsed}}hidden {{/endorsed}}mt-2">
+                                <span style="margin-left: 43px;"><a href="{{recommendationletterlink}}">{{#str}} recommendationletterlink , local_booking {{/str}}</a></span>
+                            </div>
+                            {{/qualified}}
+                            {{^qualified}}{{#str}} notqualified , local_booking {{/str}}{{/qualified}}
+                        </dd>
+                    </dl>
+                    {{/requiresevaluation}}
+                </div>
+            </section>
+            {{! ADMINISTRATION SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    <h3 class="lead">{{#str}} administration {{/str}}</h3>
+                    <dl><dt><dd>
+                        <div id="suspend-region" class="custom-control custom-switch">
+                            <input type="checkbox" class="toggle-input" id="suspended" {{#suspended}}checked{{/suspended}}>
+                            <label class="toggle-label" for="suspended">{{#str}} suspended {{/str}}</label>
+                            {{> core/overlay_loading}}
+                        </div>
+                    </dd></dt></dl>
+                    {{#onholdrestrictionenabled}}
+                    <dl><dt><dd>
+                        <div id="onhold-region" class="custom-control custom-switch">
+                            <input type="checkbox" class="toggle-input" id="onhold" {{#onhold}}checked{{/onhold}}>
+                            <label class="toggle-label" for="onhold">On-hold</label>
+                            {{> core/overlay_loading}}
+                        </div>
+                    </dd></dt></dl>
+                    <dl><dt><dd>
+                        <div id="keep-active-region" class="custom-control custom-switch">
+                            <input type="checkbox" class="toggle-input" id="keepactive" {{#keepactive}}checked{{/keepactive}}>
+                            <label class="toggle-label" for="keepactive">{{#str}} keepactive , local_booking {{/str}}</label>
+                            {{> core/overlay_loading}}
+                        </div>
+                    </dd></dt></dl>
+                    {{/onholdrestrictionenabled}}
+                    {{#waitrestrictionenabled}}
+                    <dl><dt><dd>
+                        <div id="restriction-override-region" class="custom-control custom-switch">
+                            <input type="checkbox" class="toggle-input" id="availabilityoverride" {{#restrictionoverride}}checked{{/restrictionoverride}}>
+                            <label class="toggle-label" for="availabilityoverride">{{#str}} restrictionoverride , local_booking {{/str}}</label>
+                            {{> core/overlay_loading}}
+                        </div>
+                    </dd></dt></dl>
+                    {{/waitrestrictionenabled}}
+                    {{#admin}}
+                    </br><span><a href="{{loginasurl}}">{{#str}} loginas {{/str}}</a></span>
+                    {{/admin}}
+                </div>
+            </section>
+            {{! REPORTS SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    <h3 class="lead">{{#str}} reports {{/str}}</h3>
+                    <dl><dt>Moodle
+                        <dd><span><a href="{{outlinereporturl}}">{{#str}} outlinereport , local_booking {{/str}}</a></span></dd>
+                        <dd><span><a href="{{completereporturl}}">{{#str}} completereport , local_booking {{/str}}</a></span></dd>
+                        <dd><span><a href="{{logbookurl}}">{{#str}} logbooklabel , local_booking {{/str}}</a></span></dd>
+                    </dt></dl>
+                    <dl><dt>{{#str}} auditreports , local_booking {{/str}}
+                        <dd><span><a href="{{mentorreporturl}}">{{#str}} mentorreport , local_booking {{/str}}</a></span></dd>
+                        {{#hasexams}}
+                        <dd><span><a href="{{theoryexamreporturl}}">{{#str}} theoryexamreport , local_booking {{/str}}</a></span></dd>
+                        {{/hasexams}}
+                        {{^hasexams}}
+                        <dd><span>{{#str}} theoryexamreport , local_booking {{/str}} ({{#str}} notavailable {{/str}})</span></dd>
+                        {{/hasexams}}
+                        {{#tested}}
+                        <dd><span><a href="{{practicalexamreporturl}}">{{#str}} practicalexamreport , local_booking {{/str}}</a></span></dd>
+                        {{/tested}}
+                        {{^tested}}
+                        <dd><span>{{#str}} practicalexamreport , local_booking {{/str}} ({{#str}} notavailable {{/str}})</span></dd>
+                        {{/tested}}
+                    </dt></dl>
+                </div>
+            </section>
+        </div>
+        <div>
+            {{! PROGRESSION SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    <h3 class="lead">{{#str}} progression, local_booking {{/str}}</h3>
+                    <div>
+                        {{> local_booking/profile_progression}}
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div>
+            {{! COMMENT SECTION }}
+            <section class="node_category card d-inline-block w-100 mb-3">
+                <div class="card-body">
+                    {{> core/overlay_loading}}
+                    <h3 class="lead">{{#str}} comment, local_booking {{/str}}</h3>
+                    <textarea id="comment" rows="4" style="width: 98%; max-width: 98%;">{{comment}}</textarea>
+                    <br />
+                    <button type="submit" class="save-comment-button"
+                    data-region="save-comment-button"
+                    id="save_comment_button"
+                    title="{{#str}} save {{/str}}">
+                    {{#pix}} save, local_booking {{/pix}}
+                    </button>
+                    <div id="status" class="comment-status"></div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+{{#js}}
+require(['jquery', 'local_booking/user_profile'], function($, UserProfile) {
+    UserProfile.init($("#user-profile-{{uniqid}}"));
+});
+{{/js}}

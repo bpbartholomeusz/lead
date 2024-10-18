@@ -1,0 +1,89 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    Page navbar.
+}}
+<nav class="top-navigation navbar navbar-top navbar-expand border-bottom {{#header_light}}navbar-light bg-white{{/header_light}}{{#header_dark}}navbar-dark bg-default{{/header_dark}}" aria-label="{{#str}}sitemenubar, admin{{/str}}">
+
+        {{# layout_modern }}
+        <button class="navbar-toggler aabtn d-block px-1 my-1 border-0" data-toggler="drawers" data-action="toggle" data-target="theme_boost-drawers-primary">
+            <span class="navbar-toggler-icon"></span>
+            <span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
+        </button>
+        {{/ layout_modern }}
+
+        {{# layout_classic }}
+        <div data-region="drawer-toggle" class="d-inline-block nav-drawer-btn-container">
+            <button aria-expanded="{{#navdraweropen}}true{{/navdraweropen}}{{^navdraweropen}}false{{/navdraweropen}}" aria-controls="nav-drawer" type="button" class="nav-drawer-btn btn btn-primary btn-sm" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav">{{#pix}}i/menubars{{/pix}}<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span></button>
+        </div>
+        {{/ layout_classic }}
+
+        {{# show_header_navbar_brand }}
+        <a href="{{{ config.wwwroot }}}" class="navbar-brand aabtn {{# show_header_logo }}{{# output.should_display_header_logo }}has-logo{{/ output.should_display_header_logo }}{{/ show_header_logo }}
+            {{^ output.should_display_header_logo }}
+                d-none d-sm-inline
+            {{/ output.should_display_header_logo }}
+                ">
+            {{# output.should_display_header_logo }}
+                <span class="logo">
+                    <img src="{{{ header_logo_url }}}" alt="{{sitename}}">
+                </span>
+            {{/ output.should_display_header_logo }}
+
+            {{# show_header_sitename }}
+                <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+            {{/ show_header_sitename }}
+        </a>
+        {{/ show_header_navbar_brand }}
+
+        {{# layout_modern }}
+        {{#primarymoremenu}}
+            <div class="primary-navigation">
+                {{> core/moremenu}}
+            </div>
+        {{/primarymoremenu}}
+        {{/ layout_modern }}
+
+        {{# layout_classic }}
+        <ul class="navbar-nav custom-menu">
+            <!-- custom_menu -->
+            {{{ output.custom_menu }}}
+            <!-- page_heading_menu -->
+            {{{ output.page_heading_menu }}}
+        </ul>
+        {{/ layout_classic }}
+
+        <ul class="nav navbar-nav plugin-menu d-flex ml-auto">
+            {{# show_lang_menu }}
+            <li class="nav-item item-separator">
+                {{{ output.render_lang_menu }}}
+            </li>
+            {{/ show_lang_menu }}
+            <li class="nav-item">
+                {{{ output.search_box }}}
+            </li>
+            <!-- navbar_plugin_output -->
+            <li class="nav-item item-separator">
+                {{{ output.navbar_plugin_output }}}
+            </li>
+            <!-- user_menu -->
+            <li class="nav-item d-flex align-items-center">
+                {{{ output.user_menu }}}
+            </li>
+        </ul>
+</nav>
+

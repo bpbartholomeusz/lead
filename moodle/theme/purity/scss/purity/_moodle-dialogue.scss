@@ -1,0 +1,64 @@
+.moodle-dialogue-base {
+  .moodle-dialogue-lightbox {
+    background-color: $modal-backdrop-bg;
+  }
+
+  .moodle-dialogue-wrap {
+    position: relative;
+    // display: flex;
+    // flex-direction: column;
+    width: 100%;
+    color: $modal-content-color;
+    pointer-events: auto;
+    background-color: $modal-content-bg;
+    background-clip: padding-box;
+    border: $modal-content-border-width solid $modal-content-border-color;
+    @include border-radius($modal-content-border-radius);
+    @include box-shadow($modal-content-box-shadow-xs);
+    outline: 0;
+
+    .moodle-dialogue-hd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid $modal-header-border-color;
+      @include border-top-radius($modal-content-inner-border-radius);
+    
+      .closebutton {
+        padding: 0;
+        margin: 0;
+        width: 28px;
+        height: 28px;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: $gray-100;
+        border-radius: $border-radius / 2;
+        opacity: 1;
+        transition: background-color 0.2s;
+    
+        &:hover {
+          background-color: $gray-200;
+        }
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+      }
+    }
+
+    .moodle-dialogue-bd {
+      padding: $modal-inner-padding;
+    }
+
+    .moodle-dialogue-ft {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      padding: $modal-inner-padding - $modal-footer-margin-between / 2;
+      border-top: $modal-footer-border-width solid $modal-footer-border-color;
+      @include border-bottom-radius($modal-content-inner-border-radius);
+    }
+  }
+}

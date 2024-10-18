@@ -1,0 +1,32 @@
+{{!
+    @template theme_boost/nav-drawer
+
+
+    Example context (json): {}
+}}
+<div id="nav-drawer" data-region="drawer" class="navbar navbar-vertical fixed-left navbar-expand-xs d-print-none moodle-has-zindex {{#navdrawer_light}}navbar-light bg-white{{/navdrawer_light}}{{#navdrawer_dark}}navbar-dark bg-default{{/navdrawer_dark}} {{^navdraweropen}}closed{{/navdraweropen}}" aria-hidden="{{#navdraweropen}}false{{/navdraweropen}}{{^navdraweropen}}true{{/navdraweropen}}" tabindex="-1">
+	{{# show_navdrawer_logo }}
+	<div class="navdrawer-header">
+		<a href="{{{ config.wwwroot }}}" class="logo">
+			<img src="{{{ navdrawer_logo_url }}}" alt="{{sitename}}">
+		</a>
+	</div>
+	{{/ show_navdrawer_logo }}
+
+  {{{ output.display_course_progress }}}
+
+	<div class="navdrawer-navigation">
+	{{> theme_boost/flat_navigation }}
+	</div>
+
+  {{# output.custom_menu_flat }}
+    <div class="nav-drawer-mobile-menu">
+      <hr class="my-3">
+      <nav class="list-group">
+        <ul class="navbar-nav">
+          {{> theme_purity/custom_menu_item_sidebar }}
+        </ul>
+      </nav>
+    </div>
+  {{/ output.custom_menu_flat }}
+</div>

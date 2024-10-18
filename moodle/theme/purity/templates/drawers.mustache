@@ -1,0 +1,376 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_boost/drawers
+
+    Boost drawer template.
+
+    Context variables required for this template:
+    * sitename - The name of the site
+    * output - The core renderer for the page
+    * bodyattributes - attributes for the body tag as a string of html attributes
+    * sidepreblocks - HTML for the blocks
+    * hasblocks - true if there are blocks on this page
+    * courseindexopen - true if the nav drawer should be open on page load
+    * regionmainsettingsmenu - HTML for the region main settings menu
+    * hasregionmainsettingsmenu - There is a region main settings menu on this page.
+
+    Example context (json):
+    {
+        "sitename": "Moodle",
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Test page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headings make html validators happier</h1>"
+         },
+        "bodyattributes":"",
+        "sidepreblocks": "<h2>Blocks html goes here</h2>",
+        "hasblocks":true,
+        "courseindexopen": true,
+        "navdraweropen": false,
+        "blockdraweropen": true,
+        "regionmainsettingsmenu": "",
+        "hasregionmainsettingsmenu": false,
+        "addblockbutton": ""
+    }
+}}
+{{> theme_purity/head }}
+
+<body {{{ bodyattributes }}}>
+
+{{> core/local/toast/wrapper}}
+
+    <div id="page-wrapper" class="{{#is_frontpage}}is-frontpage{{/is_frontpage}} d-print-block">
+
+        {{{ output.standard_top_of_body_html }}}
+
+        {{> theme_boost/navbar }}
+
+        {{#courseindex}}
+            {{< theme_purity/drawer }}
+                {{$id}}theme_boost-drawers-courseindex{{/id}}
+                {{$drawerclasses}}drawer drawer-left {{#courseindexopen}}show{{/courseindexopen}}{{/drawerclasses}}
+                {{$drawercontent}}
+                    {{{courseindex}}}
+                {{/drawercontent}}
+                {{$drawerpreferencename}}drawer-open-index{{/drawerpreferencename}}
+                {{$drawerstate}}show-drawer-left{{/drawerstate}}
+                {{$tooltipplacement}}right{{/tooltipplacement}}
+                {{$closebuttontext}}{{#str}}closecourseindex, core{{/str}}{{/closebuttontext}}
+            {{/ theme_purity/drawer}}
+        {{/courseindex}}
+        {{#hasblocks}}
+            {{< theme_purity/drawer }}
+                {{$id}}theme_boost-drawers-blocks{{/id}}
+                {{$drawerclasses}}drawer drawer-right{{#blockdraweropen}} show{{/blockdraweropen}}{{/drawerclasses}}
+                {{$drawercontent}}
+                    <section class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                        {{{ addblockbutton }}}
+                        {{{ sidepreblocks }}}
+                    </section>
+                {{/drawercontent}}
+                {{$drawerpreferencename}}drawer-open-block{{/drawerpreferencename}}
+                {{$forceopen}}{{#forceblockdraweropen}}1{{/forceblockdraweropen}}{{/forceopen}}
+                {{$drawerstate}}show-drawer-right{{/drawerstate}}
+                {{$tooltipplacement}}left{{/tooltipplacement}}
+                {{$drawercloseonresize}}1{{/drawercloseonresize}}
+                {{$closebuttontext}}{{#str}}closeblockdrawer, core{{/str}}{{/closebuttontext}}
+            {{/ theme_purity/drawer}}
+        {{/hasblocks}}
+
+        <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
+            <div id="topofscroll" class="main-inner">
+                <div class="drawer-toggles d-flex">
+                    {{#courseindex}}
+                        <div class="drawer-toggler drawer-left-toggle open-nav d-print-none">
+                            <button
+                                class="btn icon-no-margin"
+                                data-toggler="drawers"
+                                data-action="toggle"
+                                data-target="theme_boost-drawers-courseindex"
+                                data-toggle="tooltip"
+                                data-placement="right"
+                                title="{{#str}}opendrawerindex, core{{/str}}"
+                            >
+                                <span class="sr-only">{{#str}}opendrawerindex, core{{/str}}</span>
+                                {{#pix}} t/index_drawer, moodle {{/pix}}
+                            </button>
+                        </div>
+                    {{/courseindex}}
+                    {{#hasblocks}}
+                        <div class="drawer-toggler drawer-right-toggle ml-auto d-print-none">
+                            <button
+                                class="btn icon-no-margin"
+                                data-toggler="drawers"
+                                data-action="toggle"
+                                data-target="theme_boost-drawers-blocks"
+                                data-toggle="tooltip"
+                                data-placement="right"
+                                title="{{#str}}opendrawerblocks, core{{/str}}"
+                            >
+                                <span class="sr-only">{{#str}}opendrawerblocks, core{{/str}}</span>
+                                <span class="dir-rtl-hide">{{#pix}}t/blocks_drawer, core{{/pix}}</span>
+                                <span class="dir-ltr-hide">{{#pix}}t/blocks_drawer_rtl, core{{/pix}}</span>
+                            </button>
+                        </div>
+                    {{/hasblocks}}
+                </div>
+
+                {{#show_breadcrumbs}}
+                <div class="page-top">
+                  <div class="{{{ container_class }}}">
+                    <div class="row">
+                      <div class="col-xl-7 col-lg-12">
+                        {{#hasnavbar}}
+                        {{{ output.navbar }}}
+                        {{/hasnavbar}}
+                      </div>
+                      <div class="col-xl-5 col-lg-12">
+                        <div class="page-top-buttons-wrapper">
+                          {{#output.context_header_settings_menu}}
+                          <div class="page-top-settings-menu">{{{ output.context_header_settings_menu}}}</div>
+                          {{/output.context_header_settings_menu}}
+                          {{{ output.page_heading_button }}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {{/show_breadcrumbs}}
+
+                {{#is_real_frontpage}}
+                    {{^show_breadcrumbs}}
+                    <div class="page-top-settings-menu frontpage">{{{ output.context_header_settings_menu}}}</div>
+                    {{/show_breadcrumbs}}
+                {{/is_real_frontpage}}
+
+                {{#is_frontpage}}
+                    {{#has_blocks_fp_fullwidth}}
+                    <section id="region-fp-fullwidth" class="fp-fullwidth" data-region="blocks-fp-fullwidth" aria-label="{{#str}}blocks{{/str}}" style="{{ fpfullwidth_styles }}">
+                        {{{ blocks_fp_fullwidth }}}
+                    </section>
+                    {{/has_blocks_fp_fullwidth}}
+
+                    {{#has_blocks_fp_intro}}
+                    <section id="region-fp-intro" class="fp-intro" data-region="blocks-fp-intro" aria-label="{{#str}}blocks{{/str}}" style="{{ fpintro_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_intro }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_intro}}
+
+                    {{#has_blocks_fp_feature}}
+                    <section id="region-fp-feature" class="fp-feature" data-region="blocks-fp-feature" aria-label="{{#str}}blocks{{/str}}" style="{{ fpfeature_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_feature }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_feature}}
+
+                    {{#has_blocks_fp_utility}}
+                    <section id="region-fp-utility" class="fp-utility" data-region="blocks-fp-utility" aria-label="{{#str}}blocks{{/str}}" style="{{ fputility_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_utility }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_utility}}
+
+                    {{#has_blocks_fp_extension}}
+                    <section id="region-fp-extension" class="fp-extension" data-region="blocks-fp-extension" aria-label="{{#str}}blocks{{/str}}" style="{{ fpextension_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_extension }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_extension}}
+
+                    {{#has_blocks_fp_additional}}
+                    <section id="region-fp-additional" class="fp-additional" data-region="blocks-fp-additional" aria-label="{{#str}}blocks{{/str}}" style="{{ fpadditional_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_additional }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_additional}}
+
+                    {{#has_blocks_fp_prebottom}}
+                    <section id="region-fp-prebottom" class="fp-prebottom" data-region="blocks-fp-prebottom" aria-label="{{#str}}blocks{{/str}}" style="{{ fpprebottom_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_prebottom }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_prebottom}}
+
+                    {{#has_blocks_fp_bottom}}
+                    <section id="region-fp-bottom" class="fp-bottom" data-region="blocks-fp-bottom" aria-label="{{#str}}blocks{{/str}}" style="{{ fpbottom_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_bottom }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_bottom}}
+
+                    {{#has_blocks_fp_afterbottom}}
+                    <section id="region-fp-afterbottom" class="fp-afterbottom" data-region="blocks-fp-afterbottom" aria-label="{{#str}}blocks{{/str}}" style="{{ fpafterbottom_styles }}">
+                        <div class="{{{ container_class }}}">
+                            <div class="row">
+                                <div class="col-12">
+                                    {{{ blocks_fp_afterbottom }}}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {{/has_blocks_fp_afterbottom}}
+                {{/is_frontpage}}
+
+                <div id="page-content" class="d-print-block">
+
+                    <div class="page-content-inner">
+
+                        {{{ output.full_header }}}
+                    
+                        {{^is_course_participants}}
+                        {{#has_blocks_main_top}}
+                        <section id="region-main-top" data-region="blocks-main-top" class="col-12 d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                          {{{ blocks_main_top }}}
+                        </section>
+                        {{/has_blocks_main_top}}
+                        {{/is_course_participants}}
+
+                        <div id="region-main-box">
+
+                            {{#hasregionmainsettingsmenu}}
+                            <div id="region-main-settings-menu" class="d-print-none">
+                                <div> {{{ regionmainsettingsmenu }}} </div>
+                            </div>
+                            {{/hasregionmainsettingsmenu}}
+                            
+                            <section id="region-main" aria-label="{{#str}}content{{/str}}">
+
+                                {{^is_course_participants}}
+                                {{#has_blocks_above_content}}
+                                <section id="region-above-content" data-region="blocks-above-content" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                                  {{{ blocks_above_content }}}
+                                </section>
+                                {{/has_blocks_above_content}}
+                                {{/is_course_participants}}
+
+                                {{#hascard}}
+                                <div class="card {{^show_main_content}}hide-main-content{{/show_main_content}}">
+                                    <div class="card-body">
+                                {{/hascard}}
+
+                                    {{#hasregionmainsettingsmenu}}
+                                        <div class="region_main_settings_menu_proxy"></div>
+                                    {{/hasregionmainsettingsmenu}}
+
+                                    {{#show_course_content_title}}
+                                        <h3 class="course-content-title">{{#str}}course_content_title, theme_purity{{/str}}</h3>
+                                    {{/show_course_content_title}}
+
+                            <div class="search-secondary-navigation-wrapper">
+                              {{> core_admin/header_search_input}}
+                              <hr>
+                            </div>
+
+                                    {{{ output.course_content_header }}}
+
+                                    {{#headercontent}}
+                                        {{> core/activity_header }}
+                                    {{/headercontent}}
+
+                                    {{#overflow}}
+                                        <div class="container-fluid tertiary-navigation">
+                                            <div class="navitem">
+                                                {{> core/url_select}}
+                                            </div>
+                                        </div>
+                                    {{/overflow}}
+
+                                    {{{ output.main_content }}}
+                                    {{{ output.activity_navigation }}}
+                                    {{{ output.course_content_footer }}}
+
+                                {{#hascard}}
+                                    </div>
+                                </div>
+                                {{/hascard}}
+
+                                {{^is_course_participants}}
+                                {{#has_blocks_below_content}}
+                                <section id="region-below-content" data-region="blocks-below-content" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                                  {{{ blocks_below_content }}}
+                                </section>
+                                {{/has_blocks_below_content}}
+                                {{/is_course_participants}}
+
+                            </section>
+
+                        </div>
+
+                        {{^is_course_participants}}
+                        {{#has_blocks_main_bottom}}
+                        <section id="region-main-bottom" data-region="blocks-main-bottom" class="col-12 d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                          {{{ blocks_main_bottom }}}
+                        </section>
+                        {{/has_blocks_main_bottom}}
+                        {{/is_course_participants}}
+
+                    </div>
+
+                </div>
+            </div>
+            {{> theme_purity/footer }}
+        </div>
+        {{{ output.standard_after_main_region_html }}}
+    </div>
+
+</body>
+</html>
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+    Drawer.init();
+    M.util.js_complete('theme_boost/loader');
+});
+{{/js}}

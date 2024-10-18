@@ -1,0 +1,204 @@
+$blog-entry-padding: 2rem !default;
+
+.path-blog {
+  .addbloglink {
+    margin-bottom: 1.5rem;
+    text-align: left;
+
+    > a {
+      &:focus {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+
+  .blog_entry {
+    margin-bottom: 1.5rem;
+    padding: $blog-entry-padding !important;
+    overflow: hidden;
+  }
+
+  .blog-info {
+    margin: 15px 0 0;
+
+    dd {
+      display: inline-block;
+      margin: 0 20px 0 0;
+      font-size: $font-size-sm;
+    }
+  }
+
+  .attachedimages {
+    margin: ($blog-entry-padding * -1) ($blog-entry-padding * -1) 2rem;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  // .blog-title-info-container {
+  //   + .no-overflow {
+  //     margin-top: -1rem;
+  //   }
+  // }
+
+  .tag_list {
+    ul {
+      margin-left: 10px;
+
+      li {
+        display: inline-flex;
+        margin: 0 2px;
+
+        > a {
+          font-size: 80% !important;
+          font-weight: $font-weight-bold;
+          background-color: $gray-100 !important;
+          color: $primary !important;
+          padding: 0.5rem 0.75rem;
+          border: 1px solid $border-color;
+          border-radius: 30px;
+          line-height: 1;
+          letter-spacing: 0.1px;
+          transition: all 0.2s;
+    
+          &:hover,
+          &:focus {
+            background-color: $gray-200 !important;
+          }
+        }
+      }
+    }
+  }
+
+  .blog-modified-date {
+    font-size: $font-size-sm;
+    opacity: 0.6;
+  }
+
+  .blog-bottom-container {
+    margin-top: 2rem;
+
+    hr {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .audience {
+      display: inline-flex;
+      text-align: left;
+      font-size: 80%;
+      font-weight: $font-weight-bold;
+      background-color: $gray-100;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid $border-color;
+      border-radius: 30px;
+      line-height: 1;
+      letter-spacing: 0.1px;
+    }
+  }
+}
+
+.comment-ctrl {
+  font-size: $font-size-base;
+
+  .comment-list {
+    font-size: $font-size-base;
+
+    li {
+      margin: 0 0 1rem;
+      padding: 0;
+      border-radius: $border-radius;
+    }
+  }
+
+  .comment-message {
+    padding: 1rem;
+    border-radius: $border-radius;
+
+    .comment-message-meta {
+      margin-bottom: 10px;
+      color: $gray-500;
+
+      .user {
+        margin-right: 5px;
+        font-weight: $font-weight-bold;
+      }
+
+      .time {
+        margin-left: 5px;
+        font-size: $font-size-sm;
+      }
+    }
+
+    .picture {
+      width: auto;
+      float: none;
+
+      img.userpicture {
+        width: 24px;
+        height: 24px;
+        margin: 0 10px 0 0;
+      }
+    }
+  }
+
+  .comment-area {
+      max-width: none;
+      margin-top: 0.5rem;
+      padding: 0;
+
+      > .db {
+        textarea {
+          padding: $input-padding-y $input-padding-x;
+          font-family: $input-font-family;
+          @include font-size($input-font-size);
+          font-weight: $input-font-weight;
+          line-height: $input-line-height;
+          color: $input-color;
+          background-color: $input-bg;
+          background-clip: padding-box;
+          border: $input-border-width solid $input-border-color;
+        
+          // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+          @include border-radius($input-border-radius, 0);
+        
+          @include box-shadow($input-box-shadow);
+          @include transition($transition-ease-in-out);
+
+          // Unstyle the caret on `<select>`s in IE10+.
+          &::-ms-expand {
+            background-color: transparent;
+            border: 0;
+          }
+
+          // Remove select outline from select box in FF
+          &:-moz-focusring {
+            color: transparent;
+            text-shadow: 0 0 0 $input-color;
+          }
+
+          // Customize the `:focus` state to imitate native WebKit styles.
+          @include form-control-focus($ignore-warning: true);
+
+          // Placeholder
+          &::placeholder {
+            color: $input-placeholder-color;
+            // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+            opacity: 1;
+          }
+        }
+      }
+
+      > .fd {
+        text-align: left;
+        margin-top: 1.5rem;
+      }
+  }
+}
+
+.comment-link + .comment-ctrl {
+  margin-top: 1.5rem;
+}

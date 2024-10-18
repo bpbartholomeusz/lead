@@ -1,0 +1,1329 @@
+.course-content-title {
+  padding: $card-spacer-y $card-spacer-x;
+  margin: (-$card-spacer-x) (-$card-spacer-x) 2rem;
+  border-bottom: 1px solid $card-border-color;
+}
+
+.course-content {
+  .purity-collapsible {
+    &.topics,
+    &.weeks {
+      li.section {
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        .card {
+          margin-bottom: 15px;
+        }
+      }
+    }
+
+    .current {
+      &::before {
+        top: 3px;
+        bottom: 3px;
+        left: 1px;
+        border-radius: $border-radius;
+        z-index: 2;
+      }
+    }
+
+    .purity-completion-icon {
+      position: absolute;
+      right: 3.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 125%;
+
+      &.section-completed {
+        color: $success;
+      }
+
+      &.section-not-completed {
+        color: $gray-600;
+      }
+    }
+  }
+
+  .purity-default {
+    li {
+      &.section {
+        &.main {
+          border-top: 1px solid $border-color;
+          border-bottom: none;
+
+          &:first-child {
+            border-top: none;
+          }
+        }
+      }
+    }
+
+    &.topics,
+    &.weeks {
+      li.section {
+        margin: 0;
+        padding: 1.5rem 0;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
+    }
+
+    .section-summary {
+      margin-top: 1em !important;
+      padding: $card-spacer-y $card-spacer-x !important;
+      border: 1px solid $border-color !important;
+
+      &.current {
+        &::before {
+          left: 0;
+        }
+      }
+    }
+  }
+
+  .section-summary {
+    .section-title,
+    .summarytext,
+    .summarytext p {
+      margin: 0;
+    }
+
+    .title-summary-button-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      @include media-breakpoint-down(sm) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .section-summary-activities {
+      margin-top: 1rem;
+      padding: 0;
+  
+      .activity-count {
+        display: block;
+        margin: 0;
+        padding: 12px 0;
+        border-top: 1px solid $border-color;
+  
+        &:first-child {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .section {
+    .side {
+      margin: 0;
+      padding: 0 !important;
+
+      &.left {
+        .icon {
+          margin-right: 0.75rem;
+        }
+      }
+    }
+
+    .sectionname {
+      margin: 0;
+    }
+
+    .quickeditlink {
+      margin-left: 0.5rem;
+    }
+
+    .section-modchooser-link {
+      padding: 0;
+      margin: 25px 0 !important;
+    }
+
+    .changenumsections {
+      border: none;
+    }
+
+    .activity-add-text {
+      text-decoration: none !important;
+    }
+  }
+
+  .activity {
+    img {
+      &.activityicon {
+        margin-right: 0.75rem;
+      }
+    }
+  }
+
+  ul {
+    &.topics,
+    &.weeks {
+      li.section {
+        .summary,
+        .content > .availabilityinfo {
+          margin: 10px 0;
+        }
+      }
+    }
+
+    &.section {
+      margin: 1.5rem .5rem 0;
+
+      li.activity {
+        padding: 20px 0;
+        border-top: 1px solid $card-border-color;
+
+        &:first-child {
+          border-top: none;
+        }
+      }
+    }
+  }
+
+  .single-section {    
+    h3.sectionname {
+      text-align: left;
+    }
+
+    .section-navigation {
+      margin: 30px 0 0;
+      padding: 0;
+
+      .mdl-left,
+      .mdl-right {
+        height: 46px;
+        line-height: 46px;
+        font-weight: $font-weight-bold;
+
+        .larrow {
+          margin-right: 10px;
+        }
+  
+        .rarrow {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .activity-information {
+    [data-region="completion-info"] {
+      > .btn {
+        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+      }
+    }
+
+    .automatic-completion-conditions {
+      .badge {
+        font-size: .80rem;
+        margin: 0 !important;
+      }
+    }
+  }
+
+  .mod-indent-outer {
+    > div:not(.mod-indent) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.show-completion-icons {
+  .sectionbadges {
+    margin-right: 45px;
+  }
+}
+
+.editing {
+  .course-content {
+    .activity-information {
+      display: none !important;
+    }
+  }
+}
+
+.path-site li.activity > div,
+.path-course-view li.activity > div {
+  padding: 0;
+}
+
+.section li.activity.hasinfo {
+  border: none;
+}
+
+.modchoosercontainer {
+  .tab-content,
+  .searchresultitemscontainer-wrapper {
+    padding: 10px;
+    background-color: $gray-100 !important;
+  }
+
+  .optionscontainer,
+  .searchresultitemscontainer {
+    padding: 0 !important;
+
+    .option {
+      flex-basis: calc(20% - 30px);
+      margin: 15px !important;
+
+      .optioninfo {
+        padding: 12px !important;
+      }
+
+      .optionactions {
+        margin-top: 10px;
+      }
+    }
+
+    .card {
+      box-shadow: $purity-box-shadow;
+    }
+  }
+}
+
+.path-course-view {
+  .completionprogress {
+    float: none;
+    height: auto;
+    margin: 0 0 20px;
+
+    .btn-link {
+      margin-top: -2px;
+
+      .icon {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .userlist {
+    #participantsform {
+      margin-top: 2rem;
+    }
+  }
+
+  [data-region="participant-count"] {
+    margin-bottom: 2rem;
+
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    text-transform: none;
+    letter-spacing: 0.1px;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    @include border-radius($badge-pill-border-radius);
+    background-color: $green;
+    color: $white;
+  }
+
+  .table {
+    &#participants {
+      min-height: auto;
+
+      th,
+      td {
+        padding: 10px;
+      }
+
+      td {
+        a[role="button"] {
+          padding: 8px;
+
+          .icon {
+            margin: 0;
+          }
+        }
+      }
+
+      .commands {
+        display: inline-flex;
+        margin: 0 5px;
+      }
+
+      .quickediticon {
+        .icon {
+          margin-left: 7px;
+        }
+      }
+    }
+  }
+}
+
+#page-mod-assign-grading {
+  .table {
+    th,
+    td {
+      padding: 10px;
+    }
+  }
+
+  .no-overflow {
+    overflow: visible;
+  }
+}
+
+.path-mod-assign {
+  [data-region="grading-navigation-panel"] {
+    height: 110px;
+    background-color: $white;
+    border-color: $border-color;
+  }
+
+  [data-region="grading-navigation"] {
+    padding: 1rem;
+
+    [data-region="input-field"] {
+      input {
+        margin: 0;
+      }
+    }
+  }
+
+  [data-region="user-selector"] {
+    .alignment {
+      width: auto;
+      margin: 0;
+
+      .form-autocomplete-downarrow {
+        top: calc(50% - 12px);
+      }
+    }
+
+    [data-action="previous-user"],
+    [data-action="next-user"] {
+      font-size: 20px;
+    }
+  }
+
+  [data-region="grade-panel"] {
+    padding: 1rem;
+    top: 110px;
+    bottom: 77px;
+    background-color: $gray-100;
+  }
+
+  [data-region="grade-actions-panel"] {
+    height: 77px;
+    background-color: $white;
+    border-color: $border-color;
+  }
+
+  [data-region="grade-actions"] {
+    padding: 1rem;
+  }
+
+  [data-region="grading-actions-form"] {
+    label {
+      input[type="checkbox"] {
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+.path-mod-forum {
+  .table {
+    &.discussion-list {
+      th,
+      td {
+        padding: 10px;
+      }
+
+      .topic {
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .fit-content {
+      width: auto !important;
+    }
+  }
+
+  .discussionname {
+    font-size: $h2-font-size;
+  }
+
+  [data-content="forum-discussion"] {
+    margin-top: 30px;
+    position: relative;
+  }
+
+  .discussion-tools {
+    position: absolute;
+    top: -60px;
+    right: 0;
+
+    @include media-breakpoint-down(sm) {
+      position: relative;
+      top: 0;
+      margin-bottom: 30px;
+    }
+
+    + .discussion-nav {
+      display: none;
+    }
+  }
+
+  // .discussionsubscription,
+  .discussion-settings-menu {
+    margin: 0;
+    text-align: left;
+
+    .dropdown-toggle {
+      &::after {
+        display: none;
+      }
+
+      .icon {
+        margin-right: 4px;
+      }
+    }
+  }
+}
+
+#page-course-view-social {
+  #intro {
+    padding: 0 !important;
+  }
+}
+
+.forumpost {
+  padding: 1.25rem !important;
+  border-radius: $border-radius;
+  box-shadow: $purity-box-shadow;
+
+  .post-details {
+    font-size: 90%;
+  }
+
+  .post-content-container {
+    > p {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .post-actions {
+    .btn {
+      margin-right: 0;
+    }
+  }
+
+  [data-content="inpage-reply-content"] {
+    padding-left: 61px;
+    margin-top: 30px;
+
+    > .card {
+      box-shadow: none;
+      padding: 0;
+      margin-bottom: 5px;
+      border: none;
+    }
+  }
+
+  [data-content="inpage-reply-form"] {
+    > .row {
+      &:last-child {
+        margin-top: 15px;
+      }
+    }
+  }
+
+  .social-discussion-footer {
+    &:not(:empty) {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid $border-color;
+    }
+  }
+}
+
+:target > .forumpost::before {
+  background: $primary;
+}
+
+.reportlink {
+  float: right;
+}
+
+#page-mod-forum-search {
+  [role="main"] {
+    > h3 {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.page-top-buttons-wrapper {
+  .forumsearch {
+    .input-group {
+      .input-group-prepend {
+        margin: 0 1rem 0 0.5rem;
+        align-items: center;
+
+        .text-info {
+          margin: 0;
+          color: $purity-page-top-text-color !important;
+          font-size: 16px !important;
+        }
+      }
+
+      #search {
+        margin: 0;
+        border-color: transparent;
+        z-index: 3;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+      }
+    }
+  }
+
+  > .btn-link {
+    .text-info {
+      margin: 0;
+      color: $purity-page-top-text-color !important;
+      font-size: 16px !important;
+    }
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .page-top-buttons-wrapper {
+    .forumsearch {
+      .input-group {
+        #search {
+          min-width: 150px;
+        }
+      }
+    }
+  }
+}
+
+.editing {
+  .section {
+    .activity {
+      &:hover,
+      &.action-menu-shown {
+        background-color: $gray-100;
+    }
+  }
+}
+}
+
+.badges-controlmenu-wrapper .action-menu .dropdown-toggle,
+.activity-item .action-menu .dropdown-toggle {
+  background-color: $gray-100 !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modchooser {
+  .searchcontainer {
+    .searchbar {
+      .input-group-append {
+        .btn {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        .icon {
+          color: inherit;
+          width: 23px;
+          height: 23px;
+        }
+      }
+    }
+  }
+}
+
+.cb-search-container {
+  .searchbar {
+    .input-group-append {
+      .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .icon {
+        margin: 0;
+        color: inherit;
+        width: 23px;
+        height: 23px;
+        font-size: 20px;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.enrolusersbutton {
+  .btn {
+    margin: 0 0 1rem !important;
+  }
+}
+
+.participants-filter {
+  padding: 1rem;
+  background-color: $gray-100 !important;
+
+  .action-buttons-row {
+    margin-top: 1rem;
+  }
+}
+
+.path-admin-tool-lp {
+  [data-region="coursecompetenciespage"] {
+    [data-region="actions"] {
+      margin-bottom: 1rem;
+    }
+  }
+
+  [data-region="competencylinktree"] {
+    [data-region="filtercompetencies"] {
+      input {
+        margin: 0;
+      }
+
+      img.icon {
+        margin: 0;
+      }
+    }
+
+    .competency-tree {
+      margin: 15px 0 0 !important;
+      border-color: $border-color;
+    }
+  }
+}
+
+#coursesearch {
+  margin: 0;
+
+  .coursesearchbox {
+    > label {
+      margin-right: 15px;
+    }
+  }
+}
+
+.path-grade-report-grader {
+  #region-main {
+    display: flex;
+  }
+
+  .gradeparent {
+    .gradereport-grader-table {
+      width: 100%;
+
+      .heading {
+        text-transform: none;
+      }
+
+      .cell {
+        padding: 10px;
+
+        &.user {
+          .userpicture {
+            margin: 0 10px 0 0;
+          }
+        }
+      }
+
+      .heading .cell,
+      .avg .cell,
+      .user.cell {
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
+
+.path-grade-report-singleview div.reporttable {
+  text-align: left;
+}
+
+#page-grade-report-grader-index [role="main"] h3 {
+  margin: 2rem 0;
+}
+
+#page-badges-view {
+  .table {
+    margin: 1.5rem 0;
+
+    .action-icon {
+      .icon {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.coursecat-management-header {
+  h2 {
+    display: block;
+  }
+
+  .view-mode-selector {
+    align-items: center;
+
+    .moodle-actionmenu {
+      margin-left: 1rem !important;
+    }
+  }
+
+  > div > div {
+    margin: 0;
+  }
+
+  .singleselect {
+    width: 100%;
+  }
+
+  div.singleselect {
+    margin-top: 15px;
+  }
+}
+
+#coursecat-management {
+  margin-top: 1.5rem;
+
+  #course-category-listings {
+    .sr-only {
+      position: absolute;
+    }
+
+    .card-header {
+      padding: $card-spacer-y $card-spacer-x;
+    }
+
+    .listing-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+
+    .item-actions {
+      margin-right: 0;
+    }
+
+    ul {
+      margin: 0 !important;
+      padding: 0;
+
+      .listitem {
+        margin: 0 0 10px;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+
+        > ul {
+          margin-top: 1rem !important;
+        }
+      }
+    }
+
+    #category-listing {
+      .course-count {
+        margin-right: 0;
+
+        .icon {
+          margin: 0 0 0 0.5rem;
+        }
+      }
+
+      .category-bulk-actions {
+        margin: 2rem 0 0;
+
+        .pair-key {
+          padding-top: 10px;
+          padding-right: 0 !important;
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+
+    .detail-pair {
+      margin-top: 1.5rem;
+    }
+
+    .listing-actions {
+      > .moodle-actionmenu {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+#coursesearch {
+  .card-header {
+    h2 {
+      padding: 0;
+      border: none;
+    }
+  }
+
+  .card-body {
+    > .m-auto {
+      margin: 0 !important;
+      padding: 0;
+    }
+  }
+}
+
+.course_category_tree {
+  .category {
+    &.with_children {
+      > .info {
+        margin-bottom: 30px;
+
+        > .categoryname {
+          &::after {
+            content: "\f0d8";
+          }
+        }
+      }
+
+      &.collapsed {
+        > .info {
+          margin-bottom: 0;
+
+          > .categoryname {
+            &::after {
+              content: "\f0d7";
+            }
+          }
+        }
+      }
+    }
+
+    > .info {
+      > .categoryname {
+        margin: 0;
+        padding: 0.5rem 0;
+        position: relative;
+        border-top: 1px solid $border-color;
+        background: none !important;
+        font-weight: 600;
+
+        &:hover {
+          background-color: $gray-100 !important;
+        }
+
+        &::after {
+          content: "\f0da";
+          position: absolute;
+          right: 0;
+          @if variable-exists(fa-style-family) {
+            font-family: $fa-style-family;
+          } @else {
+            font-family: "FontAwesome";
+          }
+          font-size: inherit;
+          color: inherit;
+        }
+
+        a {
+          &::before {
+            content: "\f07b";
+            margin-right: 10px;
+            @if variable-exists(fa-style-family) {
+              font-family: $fa-style-family;
+            } @else {
+              font-family: "FontAwesome";
+            }
+            font-size: inherit;
+            color: inherit;
+          }
+        }
+      }
+    }
+
+    &:first-child {
+      > .info {
+        > .categoryname {
+          border: none;
+        }
+      }
+    }
+  }
+
+  + .buttons {
+    margin-top: 1rem;
+  }
+}
+
+#coursesearch,
+#page-course-index-category {
+  &.form-inline,
+  div.simplesearchform {
+    padding: $card-spacer-y $card-spacer-x;
+    margin: (-$card-spacer-x) (-$card-spacer-x) 2rem;
+    border-bottom: 1px solid $card-border-color;
+  }
+}
+
+.coursebox {
+  > .info {
+    > .coursename {
+      a {
+        padding-left: 25px;
+      }
+    }
+  }
+}
+
+.courses,
+#page-enrol-index {
+  .dashboard-card {
+    .course-info-container {
+      .text-muted {
+        font-size: 90%;
+
+        a {
+          color: $gray-600;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+
+      .course-title {
+        font-size: $font-size-base;
+
+        a {
+          color: $headings-color;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+
+      .icon-list {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        list-style: none;
+
+        li {
+          display: inline-block;
+        }
+      }
+
+      .summary {
+        margin-top: 0.5rem;
+      }
+
+      .customfields-container {
+        margin-top: 1rem;
+      }
+    }
+
+    .card-footer {
+      .course-contacts-text {
+        font-size: $font-size-sm;
+        margin-right: 1rem;
+      }
+
+      .course-contact {
+        margin-right: 0.5rem;
+        img {
+          width: 32px;
+        }
+      }
+    }
+  }
+
+  .paging.paging-morelink {
+    padding: 0;
+  }
+}
+
+#page-enrol-index {
+  .generalbox {
+    padding: 0 !important;
+    margin-bottom: 2rem;
+
+    &:last-child,
+    &.info {
+      margin-bottom: 0;
+    }
+
+    &.info {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 0;
+
+    &.femptylabel {
+      .col-form-label {
+        display: none !important;
+      }
+
+      .col-md-9 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+
+        .continuebutton {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+      .dashboard-card {
+          width: 100%;
+      }
+  }
+  @media (min-width: 861px) {
+      .dashboard-card {
+          width: 50%;
+      }
+  }
+  @media (min-width: 1122px) {
+      .dashboard-card {
+          width: 33.33%;
+      }
+  }
+
+  .dashboard-card {
+    .dashboard-card-img {
+      height: 230px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  .enrol_fee_payment_region {
+    padding: 1.5rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    box-shadow: $purity-box-shadow;
+  }
+}
+
+.core_payment_gateways_modal {
+  .custom-radio {
+    .custom-control-label {
+      height: auto;
+    }
+  }
+}
+
+.course-price-badge {
+  padding: 3px 8px;
+  border-radius: $border-radius / 2;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  color: $white;
+
+  &.show-top {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+}
+
+.icons-price-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+#page-course-index-category {
+  .categorypicker {
+    margin: 0;
+    text-align: left;
+    position: absolute;
+    top: $card-spacer-y;
+    right: $card-spacer-x;
+
+    @include media-breakpoint-down(lg) {
+      position: relative;
+      top: auto;
+      right: auto;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+// Custom HTML for Course Summary
+.learn-bullets {
+  display: flex;
+  margin-top: 15px;
+  gap: 30px;
+
+  @include media-breakpoint-down(lg) {
+    flex-direction: column;
+  }
+
+  > ul {
+    flex: 1 1 auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: 5px 0;
+
+      > i,
+      > .icon {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+#page-report-outline-user {
+  .section {
+    margin: 0 0 $grid-gutter-width;
+    padding: 0 $card-spacer-x $card-spacer-x;
+    border: 1px solid $border-color;
+    border-radius: $card-border-radius;
+    box-shadow: $purity-box-shadow;
+
+    > h2 {
+      font-size: $h3-font-size;
+    }
+
+    .content {
+      margin: 0;
+    }
+  }
+}
+
+// Progress Bar
+.course-progressbar-wrapper {
+  padding: 0 5px;
+  margin: 0 0 25px;
+  position: relative;
+
+  .progress {
+    display: flex !important;
+    margin-bottom: 0;
+  }
+
+  #nav-drawer & {
+    padding: 0px 10px;
+    margin: 10px 0 25px;
+  }
+
+  .drawer-right & {
+    display: none !important;
+  }
+}
+
+// Fix for Quiz
+body .que .formulation,
+body .que .formulation a:hover {
+  color: $gray-700;
+}
+
+.card .table img,
+.card table img {
+  max-width: none;
+}
+
+// Other fixes
+#page-question-preview {
+  #page {
+    margin-top: 0;
+    padding-top: 50px;
+    background-color: #ffffff;
+  }
+}
+
+// Fix missing Activity Header
+.path-mod .activity-header:not(:empty) {
+  margin-top: 1.5rem;
+}
+
+// Fix Audio/Video collapsible sections
+#id_summary_editor_video,
+#id_summary_editor_audio {
+  .expanded-icon,
+  .collapsed-icon {
+    display: none !important;
+  }
+
+  fieldset.collapsible legend a.fheader::after,
+  fieldset.collapsed legend a.fheader::after {
+    right: 0;
+    margin-top: 6px;
+  }
+}
+
+// Moodle 4.3.x Adjustments
+.activity-item {
+  border-radius: .375rem;
+
+  .activity-grid {
+    .activityiconcontainer.smaller {
+      margin-right: 1rem !important;
+    }
+
+    .activity-altcontent.activity-description {
+      margin-top: 0;
+      padding: 1rem;
+    }
+  }
+
+  .activity-groupmode-info {
+    align-self: center !important;
+  }
+
+  .activity-completion {
+    align-self: center !important;
+    margin-right: 20px;
+
+    button.btn,
+    a[role="button"].btn {
+      min-height: auto;
+      font-weight: 600;
+      box-shadow: none;
+
+      &.btn-outline-secondary,
+      &.dropdown-toggle {
+        @include button-outline-variant($default);
+      }
+
+      &.btn-success {
+        @include button-variant($success, $success);
+      }
+    }
+  }
+}
+
+.activityiconcontainer.smaller {
+  width: 50px;
+  height: 50px;
+}
+
+.course-section {
+  .add-sections {
+    padding: .625rem 1.25rem !important;
+  }
+}

@@ -1,0 +1,177 @@
+.block {
+  .calendar_filters {
+    margin-top: 0 !important;
+
+    li {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .icon {
+        margin: 0;
+      }
+
+      .eventname {
+        margin-left: 5px;
+      }
+
+      a {
+        &:hover {
+          .eventname {
+            text-decoration: underline;
+          }
+        }
+
+        > span {
+          &:first-child {
+            width: 26px;
+            height: 26px;
+            display: inline-block;
+            text-align: center;
+            border-radius: $border-radius / 2;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .minicalendar {
+    margin-bottom: 30px;
+    max-width: none;
+
+    caption {
+      padding-top: 0;
+
+      > h3 {
+        font-size: 90%;
+      }
+    }
+
+    td,
+    th {
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    td {
+      a {
+        height: auto;
+        color: $primary;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  &.block_calendar_upcoming {
+    .event {
+      > a {
+        font-weight: $font-weight-bold;
+      }
+
+      .date {
+        font-size: 80%;
+        font-weight: 500;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+.path-calendar {
+  .maincalendar {
+    .header {
+      overflow: visible;
+      padding: 0 !important;
+      margin-bottom: 40px;
+
+      .custom-select {
+        height: calc(1.5em + 1.25rem + 2px);
+      }
+    }
+
+    .controls,
+    .calendarmonth {
+      width: 99.8%;
+      margin: 0 auto;
+    }
+
+    .controls {
+      margin-bottom: 30px;
+    }
+
+    .calendar-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+      }
+
+      .previous,
+      .next {
+        width: auto;
+
+        @include media-breakpoint-down(sm) {
+          float: none;
+        }
+      }
+
+      .current {
+        width: auto;
+        padding: 0;
+        margin: 0;
+        border: none;
+
+        @include media-breakpoint-down(sm) {
+          float: none;
+        }
+      }
+    }
+
+    .calendarmonth {
+      th.header {
+        padding: 15px 5px !important;
+        font-size: 90%;
+        font-weight: $font-weight-bold;
+      }
+
+      th,
+      td {
+        border: 1px solid $border-color;
+      }
+
+      td {
+        height: 6em;
+        padding: 5px 10px !important;
+        font-size: 90%;
+
+        a.day {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .bottom {
+      padding: 0;
+      margin-top: 30px;
+    }
+
+    .event {
+      .card-header {
+        .name {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// Dirty Fixes
+.col-md-9.form-inline.felement {
+  display: inline !important;
+}

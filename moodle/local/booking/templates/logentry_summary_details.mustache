@@ -1,0 +1,207 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_booking/logentry_summary_details
+
+    Log book entry details.
+
+    The purpose of this template is to render the logentry details.
+
+    This template is used in the summary modal, day and upcoming views to output logentry information consistently
+    across the calendar.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Example context (json):
+    {
+        "formattedtime": "Wednesday, 17 April, 9:27 AM",
+        "location": "Moodle HQ",
+        "isactionevent": "true",
+        "course": {
+            "viewurl": "http://mymoodlesite/course/view.php?id=1",
+            "fullname": "Course name"
+        },
+        "source": "Ical imported",
+        "iscategoryevent": "true",
+        "category": {
+            "nestedname": "Category name"
+        },
+        "subscription": "true",
+    }
+}}
+<div class="row mb-5">
+    <div class="col-1">{{#pix}} calendar, local_booking {{/pix}}</div>
+    <div class="col-11 logbook-title">{{{formattedtime}}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1 logbook-mt1">
+        <i class="logbook-mt1">{{#pix}} check, local_booking, {{#str}} exercise, local_booking {{/str}} {{/pix}}
+        </i>
+    </div>
+    <div class="col-5">{{#str}} exercise, local_booking {{/str}}</div>
+    <div class="col-6">{{{exercisename}}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1">
+        <i class="logbook-mt1">{{#pix}} user, local_booking, {{#str}} pilot, local_booking {{/str}} {{/pix}}
+        </i>
+    </div>
+    {{^soloflight}}
+        {{#dualops}}<div class="col-5">{{#str}} p1dual, local_booking {{/str}}</div>{{/dualops}}
+        {{^dualops}}<div class="col-5">{{#str}} p1multicrew, local_booking {{/str}}</div>{{/dualops}}
+    {{/soloflight}}
+    {{#soloflight}}<div class="col-5">{{#str}} p1solo, local_booking {{/str}}</div>{{/soloflight}}
+    <div class="col-6">{{p1name}}</div>
+</div>
+{{^soloflight}}
+<div class="row mt-1">
+    <div class="col-1">
+        <i class="logbook-mt1">{{#pix}} user, local_booking, {{#str}} pilot, local_booking {{/str}} {{/pix}}
+        </i>
+    </div>
+    {{#dualops}}<div class="col-5">{{#str}} p2dual, local_booking {{/str}}</div>{{/dualops}}
+    {{^dualops}}<div class="col-5">{{#str}} p2multicrew, local_booking {{/str}}</div>{{/dualops}}
+    <div class="col-6">{{p2name}}</div>
+</div>
+{{/soloflight}}
+
+<div class="row mt-1">
+    <div class="col-1"></div>
+    <div class="col-5">{{#str}} flighttype, local_booking {{/str}}</div>
+    <div class="col-6">{{trainingflight}}
+        {{#checkflight}}
+            {{#passedcheck}}<span class="logbook-check-pass">[{{#str}} checkpassed , local_booking{{/str}}]</span>{{/passedcheck}}
+            {{^passedcheck}}<span class="logbook-check-fail">[{{#str}} checkfailed , local_booking{{/str}}]</span>{{/passedcheck}}
+        {{/checkflight}}
+    </div>
+</div>
+<div class="row mt-1">
+    <div class="col-1"></div>
+    <div class="col-5">{{#str}} pirep, local_booking {{/str}}</div>
+    <div class="col-6">{{pirep}}</div>
+</div>
+
+{{^soloflight}}
+<hr/>
+{{^checkflight}}
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} groundtime, local_booking {{/str}}</div>
+    <div class="col-6">{{groundtime}}</div>
+</div>
+{{/checkflight}}
+{{/soloflight}}
+
+{{#haspictime}}
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} pictime, local_booking {{/str}}</div>
+    <div class="col-6">{{pictime}}</div>
+</div>
+{{/haspictime}}
+
+{{^soloflight}}
+{{#dualops}}
+{{^checkflight}}
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} dualtime, local_booking {{/str}}</div>
+    <div class="col-6">{{dualtime}}</div>
+</div>
+{{/checkflight}}
+{{/dualops}}
+{{^dualops}}
+{{^passedcheck}}
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} copilottime, local_booking {{/str}}</div>
+    <div class="col-6">{{copilottime}}</div>
+</div>
+{{/passedcheck}}
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} ifrtime, local_booking {{/str}}</div>
+    <div class="col-6">{{ifrtime}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} nighttime, local_booking {{/str}}</div>
+    <div class="col-6">{{nighttime}}</div>
+</div>
+{{/dualops}}
+{{/soloflight}}
+
+{{#checkflight}}
+
+{{^isstudent}}
+{{#passedcheck}}
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} checkpilottime, local_booking {{/str}}</div>
+    <div class="col-6">{{checkpilottime}}</div>
+</div>
+{{/passedcheck}}
+{{/isstudent}}
+
+{{#isstudent}}
+{{#passedcheck}}
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} i/calendareventtime, core {{/pix}}</div>
+    <div class="col-5">{{#str}} picustime, local_booking {{/str}}</div>
+    <div class="col-6">{{picustime}}</div>
+</div>
+{{/passedcheck}}
+{{/isstudent}}
+
+{{/checkflight}}
+
+<hr/>
+<div class="row mt-1">
+    <div class="col-1">{{#pix}} booking, local_booking {{/pix}}</div>
+    <div class="col-5">{{#str}} aircraft, local_booking {{/str}}</div>
+    <div class="col-6">{{aircraft}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1"></div>
+    <div class="col-5">{{#str}} callsign, local_booking {{/str}}</div>
+    <div class="col-6">{{callsign}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1"></div>
+    <div class="col-5">{{#str}} depicao, local_booking {{/str}}</div>
+    <div class="col-6">{{depicao}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1"></div>
+    <div class="col-5">{{#str}} arricao, local_booking {{/str}}</div>
+    <div class="col-6">{{arricao}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1"></div>
+    <div class="col-5">{{#str}} route, local_booking {{/str}}</div>
+    <div class="col-6">{{route}}</div>
+</div>
+<div class="row mt-1">
+    <div class="col-1"></div>
+    <div class="col-5">{{#str}} remarks, local_booking {{/str}}</div>
+    <div class="col-6">{{remarks}}</div>
+</div>
+

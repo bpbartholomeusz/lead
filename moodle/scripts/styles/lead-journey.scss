@@ -1,0 +1,56 @@
+.lead-journey-stages {
+  .stage {
+    .stage-title {
+      background-color: #4a2c4b;
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+
+      @media screen and (min-width: 768px) {
+        &[data-status='in-progress'],
+        &[data-status='initial-course'] {
+          flex: none;
+          width: max(25%, 15rem);
+          // min-width: fit-content;
+          padding-inline: 1rem !important;
+        }
+      }
+
+      &[data-status='initial-course'] {
+        background-color: #b8afb7;
+      }
+    }
+
+    .percentage {
+      display: flex;
+      align-items: center;
+      flex: 1;
+
+      &::before {
+        content: '';
+        display: block;
+        width: var(--percentage, 0%);
+        height: 14px;
+        background: #ffcec7;
+      }
+
+      > span {
+        font-weight: 600;
+        color: #4a2c4b;
+        letter-spacing: 1px;
+        font-size: 1.25rem;
+      }
+    }
+
+    .award {
+      > img {
+        // width: 3rem !important;
+        height: 55px;
+        scale: 1;
+      }
+    }
+  }
+}

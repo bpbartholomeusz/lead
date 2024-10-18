@@ -1,0 +1,38 @@
+.alert {
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: inherit !important;
+      text-decoration: underline !important;
+    }
+  }
+
+  .close {
+    margin-top: -3px;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: rgba($white, .6);
+    opacity: 1;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: rgba($white, 1);
+      opacity: 1 !important;
+    }
+  }
+
+  p {
+    font-size: $font-size-sm;
+    line-height: inherit;
+  }
+
+  > * {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

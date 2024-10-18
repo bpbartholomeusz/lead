@@ -1,0 +1,27 @@
+# Basic authentication setup
+#AuthType Basic
+#AuthName "Restricted Access"
+#AuthUserFile /var/www/html/moodle/.htpasswd
+#Require valid-user
+
+# Deny access to the .htpasswd file
+#<Files ".htpasswd">
+#  Require all denied
+#</Files>
+
+# Uncomment to use a custom error page for 401 Unauthorized
+# ErrorDocument 401 /login/index.php
+
+# Enable mod_rewrite
+RewriteEngine On
+
+# Redirect root URL to login page
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^$ /login/index.php [L]
+
+# Redirect /index.php to the login page
+RewriteCond %{REQUEST_URI} ^/index\.php$
+RewriteRule ^index\.php$ /login/index.php [L]
+
+# Existing rewrite rule for static pages
+RewriteRule ^static/(.*)\.html$ /local/staticpage/view.php?page=$1&%{QUERY_STRING} [L]

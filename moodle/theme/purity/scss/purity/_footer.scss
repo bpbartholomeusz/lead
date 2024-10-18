@@ -1,0 +1,138 @@
+.page-footer {
+  box-shadow: $box-shadow;
+
+  .footer-top {
+    padding: 3rem 0;
+    border-top: 1px solid rgba(0, 0, 0, .04);
+  }
+
+  .footer-bottom {
+    padding: 1.5rem 0;
+    border-top: 1px solid $border-color;
+  }
+
+  .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .footer-title {
+    margin-bottom: 1rem;
+    font-size: $font-size-base;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      padding: 5px 0;
+    }
+  }
+
+  a:not(.btn) {
+    color: $gray-700;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .tool_dataprivacy {
+    > a {
+      color: $white;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  .contacts {
+    i,
+    .fa,
+    .icon {
+      margin-right: 10px;
+    }
+  }
+
+  .tool_dataprivacy {
+    margin-top: 1.5rem;
+  }
+
+  .right-box {
+    text-align: right;
+
+    @include media-breakpoint-down(xs) {
+      margin-top: 1rem;
+      text-align: left;
+    }
+  }
+
+  .social-icons {
+    > a {
+      padding: 0 10px;
+    }
+  }
+
+  &.bg-default {
+    color: $navbar-dark-hover-color;
+
+    a:not(.btn) {
+      color: $navbar-dark-hover-color;
+
+      &:hover {
+        color: $navbar-dark-color;
+      }
+    }
+
+    .tool_dataprivacy {
+      > a {
+        color: $white;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $white;
+    }
+
+    .footer-top {
+      border-top: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid $navbar-dark-border-color;
+    }
+  }
+}
+
+#goto-top-link {
+  right: 30px;
+  bottom: 55px;
+  z-index: 2;
+
+  .to-top {
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,.5);
+    color: $white !important;
+    border-radius: $border-radius / 2;
+    transition: background-color 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+}
