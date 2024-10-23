@@ -1,11 +1,14 @@
 <?php
 require_once('../../../config.php');
-
 require_login();
 $context = context_system::instance();
-if (!is_siteadmin()) {
-  http_response_code(403); // Forbidden
-  echo json_encode(['error' => 'Access denied: Administrator access required']);
+
+// Set the page context to avoid $PAGE->context errors
+$PAGE->set_context($context);
+
+if (!has_capability('moodle/site:config', $context) && !has_capability('moodle/site:viewparticipants', $context)) {
+  http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+  echo json_encode(['error' => 'Access denied']); // Return an access denied message
   exit;
 }
 
@@ -19,7 +22,7 @@ try {
       SELECT gr.id, u.id AS userid, u.firstname, u.lastname, gr.groupname, gr.description, gr.audience, gr.status, gr.timecreated
       FROM {proposed_groups_requests} gr
       JOIN {user} u ON u.id = gr.userid
-      ORDER BY gr.status ASC
+      ORDER BY gr.status ASC, gr.id DESC
   ";
 
   $requests = $DB->get_records_sql($sql);
@@ -30,7 +33,7 @@ try {
     $data[] = [
       'id' => $request->id,
       'userid' => $request->userid, // Include the user ID for profile linking
-      'user' => fullname($request),
+      'user' => $request->firstname . ' ' . $request->lastname,
       'groupname' => format_string($request->groupname),
       'description' => format_text($request->description),
       'audience' => format_string($request->audience),

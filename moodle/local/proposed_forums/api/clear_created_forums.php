@@ -5,10 +5,12 @@ require_once('../../../config.php');
 require_login();
 $context = context_system::instance();
 
-// Check admin access
-if (!is_siteadmin()) {
-  http_response_code(403); // Forbidden
-  echo json_encode(['error' => 'Access denied: Administrator access required']);
+// Set the page context to avoid $PAGE->context errors
+$PAGE->set_context($context);
+
+if (!has_capability('moodle/site:config', $context) && !has_capability('moodle/site:viewparticipants', $context)) {
+  http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+  echo json_encode(['error' => 'Access denied']); // Return an access denied message
   exit;
 }
 

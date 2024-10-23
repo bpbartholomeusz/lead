@@ -2,9 +2,17 @@
 require_once('../../config.php');
 require_login();
 $context = context_system::instance();
-require_capability('moodle/site:config', $context);
 
+// Set the page context to avoid $PAGE->context errors
 $PAGE->set_context($context);
+
+// Check if the user has either 'moodle/site:config' or 'moodle/site:viewparticipants' capability
+if (!has_capability('moodle/site:config', $context) && !has_capability('moodle/site:viewparticipants', $context)) {
+  // Redirect to the homepage if the user lacks both capabilities
+  redirect(new moodle_url('/'));
+  exit;
+}
+
 $PAGE->set_url(new moodle_url('/local/proposed_group_requests/index.php'));
 $PAGE->set_title('Proposed New Group Requests');
 $PAGE->set_heading('Proposed New Group Requests');
@@ -61,8 +69,8 @@ echo $OUTPUT->header();
           data: 'id',
           render: function(data, type, row) {
             const approveBtn = `<button onclick="confirmApprove(${data})" class="btn btn-success btn-sm mr-0" style="min-width:70px;">Approve</button>`;
-            const rejectBtn = `<button onclick="confirmReject(${data})" class="btn btn-danger btn-sm" style="min-width:70px;">Reject</button>`;
-            const deleteBtn = `<button onclick="confirmDelete(${data})" class="btn btn-warning btn-sm" style="min-width:70px;">Delete</button>`;
+            const rejectBtn = `<button onclick="confirmReject(${data})" class="btn btn-warning btn-sm" style="min-width:70px;">Reject</button>`;
+            const deleteBtn = `<button onclick="confirmDelete(${data})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>`;
 
             return `<div class="d-flex gap-2 flex-wrap justify-content-center">${row.status == 0 ? `${approveBtn} ${rejectBtn}` : deleteBtn}</div>`
           }

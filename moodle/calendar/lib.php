@@ -3575,6 +3575,7 @@ function calendar_get_view(\calendar_information $calendar, $view, $includenavig
             $data->viewingupcoming = true;
             $data->showviewselector = true;
         } else if ($view == "upcoming_mini") {
+         
             $template = 'core_calendar/calendar_upcoming_mini';
         }
     }
@@ -3583,6 +3584,10 @@ function calendar_get_view(\calendar_information $calendar, $view, $includenavig
     if (isset($data->events)) {
         // Let's check and sanitize all "name" in $data->events before it's sent to front end.
         foreach ($data->events as $d) {
+           $registered = check_registration_status($d->id, $USER->id);
+
+           $d->isRegister = $registered; //add this data to check if user already
+            
             $name = $d->name ?? null;
             // Encode special characters if our decoded name does not match the original name.
             if ($name && (html_entity_decode($name) !== $name)) {
@@ -3592,6 +3597,17 @@ function calendar_get_view(\calendar_information $calendar, $view, $includenavig
     }
 
     return [$data, $template];
+}
+
+//check if user already registered on a event
+function check_registration_status($eventid, $userid) {
+    global $DB, $USER;  // Ensure $DB is declared as global
+
+    // Now you can use $DB
+    $registered = $DB->record_exists('event_registrations', array('userid' => $USER->id, 'eventid' => $eventid));
+
+    
+    return $registered;
 }
 
 /**
@@ -3847,12 +3863,12 @@ function calendar_get_allowed_event_types(int $courseid = null) {
         $types['site'] = true;
     }
 
-    if (has_capability('moodle/calendar:manageownentries', \context_system::instance())) {
-        $types['user'] = true;
-    }
-    if (core_course_category::has_manage_capability_on_any()) {
-        $types['category'] = true;
-    }
+    // if (has_capability('moodle/calendar:manageownentries', \context_system::instance())) {
+    //     $types['user'] = true;
+    // }
+    // if (core_course_category::has_manage_capability_on_any()) {
+    //     $types['category'] = true;
+    // }
 
     // We still don't know if the user can create group and course events, so iterate over the courses to find out
     // if the user has capabilities in one of the courses.

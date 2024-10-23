@@ -5,9 +5,6 @@ function local_stageprogress_extend_navigation_course($navigation, $course, $con
 {
   global $CFG, $PAGE;
 
-  // Temporary debugging message
-  debugging('local_stageprogress_extend_navigation_course executed', DEBUG_DEVELOPER);
-
   if (has_capability('local/stageprogress:view', $context)) {
     $url = new moodle_url('/local/stageprogress');
     $navigation->add(

@@ -1,25 +1,32 @@
 <?php
-// propose_group.php
-
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/message/lib.php'); // Required for messaging
-
 require_login(); // Ensure the user is logged in
+$context = context_system::instance();
+
+$PAGE->set_context($context);
+
+if (!isloggedin() || isguestuser()) {
+  http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+  echo json_encode(['error' => 'Please login first',]); // Return an access denied message
+  exit;
+}
+
 header('Content-Type: application/json'); // Set response type to JSON
 
 try {
-  // // Only allow POST requests
-  // if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  //   throw new Exception('Only POST requests are allowed', 405);
-  // }
+  // Only allow POST requests
+  if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    throw new Exception('Only POST requests are allowed', 405);
+  }
 
   // Get and validate required and optional parameters
   $groupname = required_param('groupname', PARAM_TEXT); // Required group name parameter
   $description = optional_param('description', '', PARAM_TEXT); // Optional description
   $audience = optional_param('audience', '', PARAM_TEXT); // Optional audience
 
-  // Add "#" prefix to the group name for uniqueness and branding
-  $groupnameWithHash = '#' . $groupname;
+  // Concatenate "#" prefix only if it doesn't already exist at the start of the group name
+  $groupnameWithHash = (strpos($groupname, '#') === 0) ? $groupname : '#' . $groupname;
 
   // Verify group name length, assuming maximum of 255 characters (including #)
   if (strlen($groupnameWithHash) > 255) {

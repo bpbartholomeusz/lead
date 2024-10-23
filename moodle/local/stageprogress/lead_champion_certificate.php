@@ -1,6 +1,8 @@
 <?php
 require_once('../../config.php');
 require_once('utils.php'); // Include the utils file
+$context = context_system::instance();
+$PAGE->set_context($context);
 
 try {
   // Make cmid (Course Module ID) a required parameter.

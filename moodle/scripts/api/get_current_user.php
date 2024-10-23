@@ -11,9 +11,15 @@ global $USER;
 
 // Check if the user is a guest
 if (isguestuser()) {
-  echo json_encode(["userid" => null]);
+  echo json_encode([
+    "userid" => null,
+    "is_site_admin" => false
+  ]);
   exit;
 }
 
-// Output the current user's ID
-echo json_encode(["userid" => (int)$USER->id]);
+// Output the current user's ID and admin status
+echo json_encode([
+  "userid" => (int)$USER->id,
+  "is_site_admin" => is_siteadmin() // Check if the user is a site admin
+]);

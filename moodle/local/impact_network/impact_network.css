@@ -49,3 +49,12 @@
 #page-local-impact_network-index td .btn {
   min-width: 70px;
 }
+
+#page-local-impact_network-index #eventModal {
+  z-index: 1000;
+
+  .modal-dialog {
+    width: 75%;
+    max-width: 1024px;
+  }
+}

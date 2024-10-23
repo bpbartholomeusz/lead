@@ -33,7 +33,8 @@ try {
       'name' => $group->name,
       'idnumber' => $group->idnumber,
       'description' => $group->description,
-      'is_member' => $is_member
+      'is_member' => $is_member,
+      'show_button' => isloggedin() && !isguestuser()
     ];
   }
 

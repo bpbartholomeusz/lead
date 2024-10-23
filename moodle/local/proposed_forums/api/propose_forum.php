@@ -4,6 +4,16 @@
 require_once('../../../config.php');
 require_once($CFG->dirroot . '/message/lib.php'); // Include the message library directly
 require_login();
+
+$context = context_system::instance();
+$PAGE->set_context($context);
+
+if (!isloggedin() || isguestuser()) {
+  http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+  echo json_encode(['error' => 'Please login first',]); // Return an access denied message
+  exit;
+}
+
 header('Content-Type: application/json');
 
 try {

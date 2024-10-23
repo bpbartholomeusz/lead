@@ -72,16 +72,37 @@
     <!-- Your element or content here -->
        <div class="float-left event-type-link-{{normalisedeventtype}}">
 
-<a{{!
-                        }} class=""{{!
-                        }} target="_blank"{{!
-                        }} href="/local/event_registration/list.php?eventid={{id}}"{{!
-                        }} title="participants"{{!
-                    }}>See participants</a>
+
 
 </div>
              
             </div>
+<div class="event-type-button-{{normalisedeventtype}} justify-content-end align-items-center w-100">
+{{^isRegister}}
+<button class="btn btn-info float-right align-content-center h-100 event-register-btn-{{id}}"
+{{!
+                        }} data-type="event"{{!
+                        }} data-action="view-event"{{!
+                        }} data-event-id="{{id}}"{{!
+                        }} href="{{viewurl}}"{{!
+                        }} title="{{name}}"{{!
+                    }}
+>Register Now</button>
+{{/isRegister}}
+{{#isRegister}}
+<button type="button" class="btn btn-info float-right align-content-center h-100" style="font-size:12px;padding:10px;" disabled="disabled">Already Registered</button>
+{{/isRegister}}
+<div class="event-type-link-{{normalisedeventtype}} h-100">
+<a{{!
+                        }} class="float-right align-content-center h-100 mr-3"{{!
+                        }} target="_blank"{{!
+                        }} href="/local/event_registration/list.php?eventid={{id}}"{{!
+                        }} title="participants"{{!
+                    }}>See participants</a>
+</div>
+</div>
+
+
         </div>
     {{/events}}
     {{^events}}
@@ -133,6 +154,9 @@ require([
 
 <style>
   .event-type-link-course {
+	display:none;
+  }
+ .event-type-button-course {
 	display:none;
   }
 </style>

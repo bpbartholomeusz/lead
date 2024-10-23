@@ -37,7 +37,24 @@ try {
     'userid' => $USER->id
   ]);
 
-  echo json_encode(['success' => true, 'message' => 'Successfully left the group']);
+  // Find the group conversation
+  $conversation = $DB->get_record('message_conversations', [
+    'itemtype' => 'groups',  // Ensure 'groups' is the correct itemtype
+    'itemid' => $groupid
+  ]);
+
+  if ($conversation) {
+    // Remove the user from the conversation members table
+    $DB->delete_records('message_conversation_members', [
+      'conversationid' => $conversation->id,
+      'userid' => $USER->id
+    ]);
+  }
+
+  echo json_encode([
+    'success' => true,
+    'message' => 'Successfully left the group and removed from the conversation'
+  ]);
 } catch (Exception $e) {
   http_response_code($e->getCode() ?: 500); // Use the exception's HTTP code or 500 if none provided
   echo json_encode(['error' => $e->getMessage()]);

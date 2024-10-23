@@ -1,13 +1,14 @@
 <?php
-// fetch_requests.php
-
 require_once('../../../config.php');
 require_login();
 $context = context_system::instance();
 
-if (!is_siteadmin()) {
-  http_response_code(403);
-  echo json_encode(['error' => 'Access denied']);
+// Set the page context to avoid $PAGE->context errors
+$PAGE->set_context($context);
+
+if (!has_capability('moodle/site:config', $context) && !has_capability('moodle/site:viewparticipants', $context)) {
+  http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+  echo json_encode(['error' => 'Access denied']); // Return an access denied message
   exit;
 }
 
@@ -16,13 +17,13 @@ header('Content-Type: application/json');
 try {
   global $DB;
 
-  // Fetch all proposed forum requests with user data and request details
+  // Updated SQL to include the necessary fields for fullname()
   $sql = "
-      SELECT pfr.id, u.id AS userid, u.firstname, u.lastname, pfr.forumname, pfr.audience, pfr.description, pfr.status, pfr.timecreated
-      FROM {proposed_forums_requests} pfr
-      JOIN {user} u ON u.id = pfr.userid
-      ORDER BY pfr.status ASC, pfr.id DESC
-  ";
+        SELECT pfr.id, u.id AS userid, u.firstname, u.lastname, pfr.forumname, pfr.audience, pfr.description, pfr.status, pfr.timecreated
+        FROM {proposed_forums_requests} pfr
+        JOIN {user} u ON u.id = pfr.userid
+        ORDER BY pfr.status ASC, pfr.id DESC
+    ";
 
   $requests = $DB->get_records_sql($sql);
 
@@ -32,7 +33,7 @@ try {
     $data[] = [
       'id' => $request->id,
       'userid' => $request->userid,
-      'user' => fullname($request),
+      'user' => $request->firstname . ' ' . $request->lastname, // This now works since firstname and lastname are in the query
       'forumname' => format_string($request->forumname),
       'description' => format_text($request->description),
       'audience' => format_string($request->audience),

@@ -118,7 +118,11 @@ if (has_met_stage_prerequisites($USER->id, $stage_category_id)) {
     echo $form; // Show enrollment form if prerequisites are met
   }
 } else {
-  echo '<strong class="d-block mt-4 text-lg text-center">You must complete all criteria from the previous stage to enroll in this course.</strong>';
+  echo '<div class="d-flex flex-column justify-content-center text-center mt-4 text-lg">
+  <strong>You must complete all criteria from the previous stage to enroll in this course.
+  </strong>
+  <a href="' . new moodle_url('/local/stageprogress') . '" class="text-blue">Stage Progress</a>
+  </div>';
 }
 
 if (!$forms) {
@@ -127,10 +131,11 @@ if (!$forms) {
   } else if ($returnurl) {
     notice(get_string('notenrollable', 'enrol'), $returnurl);
   } else {
-    $url = get_local_referer(false);
-    if (empty($url)) {
-      $url = new moodle_url('course/view.php?id=' . $id);
-    }
+    // $url = get_local_referer(false);
+    // if (empty($url)) {
+    //   $url = new moodle_url('course/view.php?id=' . $id);
+    // }
+    $url = new moodle_url('course/view.php?id=' . $id);
     notice(get_string('notenrollable', 'enrol'), $url);
   }
 }

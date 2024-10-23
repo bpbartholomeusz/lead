@@ -312,6 +312,7 @@ class event_exporter_base extends exporter {
         $values['iscourseevent'] = false;
         $values['iscategoryevent'] = false;
         $values['normalisedeventtype'] = $event->get_type();
+        $values['testalren'] = "hello";
         if ($moduleproxy = $event->get_course_module()) {
             // We need a separate property to flag if an event is action event.
             // That's required because canedit return true but action action events cannot be edited on the calendar UI.

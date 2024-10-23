@@ -1,17 +1,18 @@
 <?php
-// get_event_members.php
-
 require_once('../../../config.php');
 require_login();
+$context = context_system::instance();
 
-header('Content-Type: application/json');
+// Set the page context to avoid $PAGE->context errors
+$PAGE->set_context($context);
 
-// Check if the user is a site administrator
-if (!is_siteadmin()) {
-  http_response_code(403); // Forbidden
-  echo json_encode(['error' => 'Access denied. Site administrators only.']);
+if (!has_capability('moodle/site:config', $context) && !has_capability('moodle/site:viewparticipants', $context)) {
+  http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+  echo json_encode(['error' => 'Access denied']); // Return an access denied message
   exit;
 }
+
+header('Content-Type: application/json');
 
 // Get the required parameter (eventid) and validate it
 $eventid = required_param('eventid', PARAM_INT);

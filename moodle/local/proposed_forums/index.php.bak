@@ -15,8 +15,6 @@ $PAGE->set_heading('Impact Network');
 $PAGE->set_pagelayout('standard');
 $PAGE->requires->css('/local/impact_network/impact_network.css');
 
-$PAGE->requires->js(new moodle_url('https://cdn.tiny.cloud/1/f9h8tk91bs7njcugeukqacydyf1adlyboxeo3ucxnn2y0d3s/tinymce/7/tinymce.min.js'), true);
-
 echo $OUTPUT->header();
 ?>
 <h1 class="mb-4">Impact Network Events</h1>
@@ -36,7 +34,7 @@ echo $OUTPUT->header();
   </thead>
 </table>
 <hr />
-<h1 class="mt-5 mb-4">Joining the movement requests</h1>
+<h1 class="mt-5 mb-4">Event Requests</h1>
 
 <!-- Event Requests Table -->
 <table id="eventRequestsTable" class="table table-bordered dataTable">
@@ -83,18 +81,6 @@ echo $OUTPUT->header();
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Initialize TinyMCE
-    tinymce.init({
-      selector: 'textarea#eventdescription',
-      plugins: [
-        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount'
-      ],
-      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-      height: 300,
-      menubar: false, // Optional: To show or hide the menubar
-      branding: false, // Optional: To hide the "Powered by TinyMCE" branding
-    });
-
     const eventsTable = new DataTable('#impactEventsTable', {
       ajax: 'api/fetch_impact_network_events.php',
       order: [],
@@ -192,27 +178,24 @@ echo $OUTPUT->header();
     });
 
     window.updateRequest = function(requestId, status) {
-      if (confirm(`Are you sure you want to ${status == 1 ? 'approve' : 'reject'} this request?`)) {
-        fetch('api/update_event_request.php', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              requestid: requestId,
-              status: status
-            })
+      fetch('api/update_event_request.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            requestid: requestId,
+            status: status
           })
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              requestsTable.ajax.reload();
-            } else {
-              alert('Error updating request: ' + (data.error || 'Unknown error'));
-            }
-          });
-      }
-
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            requestsTable.ajax.reload();
+          } else {
+            alert('Error updating request: ' + (data.error || 'Unknown error'));
+          }
+        });
     };
 
 
@@ -256,12 +239,7 @@ echo $OUTPUT->header();
       document.getElementById('modalTitle').innerText = title;
       document.getElementById('eventid').value = event ? event.id : '';
       document.getElementById('eventname').value = event ? event.eventname : '';
-      // document.getElementById('eventdescription').value = event ? event.eventdescription : '';
-      // Use TinyMCE API to set the content in the editor
-      if (tinymce.get('eventdescription')) {
-        tinymce.get('eventdescription').setContent(event ? event.eventdescription : ''); // Set content in the TinyMCE editor
-      }
-
+      document.getElementById('eventdescription').value = event ? event.eventdescription : '';
       document.getElementById('eventModal').style.display = 'block';
     }
 
@@ -271,9 +249,6 @@ echo $OUTPUT->header();
     }
 
     function submitEvent(url) {
-      // Ensure the TinyMCE content is stored back in the textarea
-      tinymce.triggerSave();
-
       const eventid = document.getElementById('eventid').value.trim();
       const eventname = document.getElementById('eventname').value.trim();
       const eventdescription = document.getElementById('eventdescription').value.trim();

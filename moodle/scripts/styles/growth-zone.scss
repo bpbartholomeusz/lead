@@ -1,0 +1,53 @@
+#proposed-groups-content {
+  .event-thumbnail {
+    height: 4rem;
+    width: 4rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    // background-position: center;
+  }
+
+  /* General skeleton styles */
+  .skeleton,
+  .skeleton-thumbnail {
+    border-radius: 4px;
+  }
+
+  /* Specific skeleton blocks for different parts */
+  .skeleton-thumbnail {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+  }
+
+  .skeleton-title {
+    width: 50%;
+    margin-bottom: 0;
+  }
+
+  .skeleton-text {
+    height: 4rem;
+    margin-bottom: 0 !important;
+  }
+
+  .skeleton-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 3rem;
+    background-color: transparent;
+    width: 75%;
+  }
+
+  .skeleton-list .skeleton-text {
+    width: 90%;
+    height: 10px;
+    margin-bottom: 5px;
+  }
+
+  .skeleton-button {
+    width: 80px;
+    height: 30px;
+    border-radius: 1rem;
+  }
+}

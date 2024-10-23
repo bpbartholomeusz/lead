@@ -1,12 +1,14 @@
 <?php
-// fetch_impact_network_join_request.php
-
 require_once('../../../config.php');
 require_login();
+$context = context_system::instance();
 
-if (!is_siteadmin()) {
-  http_response_code(403);
-  echo json_encode(['error' => 'Access denied']);
+// Set the page context to avoid $PAGE->context errors
+$PAGE->set_context($context);
+
+if (!has_capability('moodle/site:config', $context) && !has_capability('moodle/site:viewparticipants', $context)) {
+  http_response_code(403); // Set the HTTP response code to 403 (Forbidden)
+  echo json_encode(['error' => 'Access denied']); // Return an access denied message
   exit;
 }
 
@@ -30,15 +32,10 @@ try {
   // Prepare data for JSON output
   $data = [];
   foreach ($requests as $request) {
-    $fullname = fullname((object)[
-      'firstname' => $request->firstname,
-      'lastname' => $request->lastname
-    ]);
-
     $data[] = [
       'id' => $request->id,
       'userid' => $request->userid,
-      'user' => $fullname,
+      'user' => $request->firstname . ' ' . $request->lastname, // This now works since firstname and lastname are in the query
       'eventname' => format_string($request->eventname),
       'status' => $request->status,
       'timecreated' => userdate($request->timecreated),

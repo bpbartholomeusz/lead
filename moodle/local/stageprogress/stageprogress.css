@@ -1,18 +1,45 @@
-#page-local-stageprogress-index .card-header {
+#stage-progress-accordion .card-header {
   color: #cb73b7;
   font-size: 1.25rem;
 }
 
-#page-local-stageprogress-index .accordion ul {
+#stage-progress-accordion .accordion ul {
   display: flex;
   flex-direction: column;
   row-gap: 0.25rem;
+  list-style: none;
 }
 
-#page-local-stageprogress-index .accordion ul li::marker {
-  content: '— ';
+#stage-progress-accordion ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-#page-local-stageprogress-index .accordion ul li > a > b {
+#stage-progress-accordion ul li > .fa-award {
+  color: gold;
+}
+
+#stage-progress-accordion .accordion ul li > a > b {
   color: #5e72e4 !important;
+}
+
+#stage-progress-accordion .lead_champion_certificate {
+  padding: 0.5rem 1.5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  background: lightgray;
+  cursor: not-allowed;
+}
+
+#stage-progress-accordion .qualified {
+  background: #a80a7e;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+  text-align: center;
 }

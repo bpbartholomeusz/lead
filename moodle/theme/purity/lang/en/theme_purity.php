@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-// This line protects the file from being accessed by a URL directly.                                                               
+// This line protects the file from being accessed by a URL directly.
 defined('MOODLE_INTERNAL') || die();
 
 // Theme Constants
@@ -528,3 +528,7 @@ $string['blog_comments'] = 'Comments';
 
 // Other strings
 $string['open'] = 'Open';
+
+$string['proposed_groups'] = 'Proposed Groups';
+$string['proposed_forums'] = 'Proposed Forums';
+$string['impact_network'] = 'Impact Network';

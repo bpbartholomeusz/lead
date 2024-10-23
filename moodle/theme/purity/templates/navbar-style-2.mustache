@@ -28,7 +28,7 @@
 var mpachublink = document.getElementById('drop-down-670886e8bdbcd');
         // If the user is not enrolled, disable the link
         if (!isEnrolled) {
-            
+
             var linkTextToDisable = "MPAC Hub";
 
     // Get all links with the class 'nav-link'
@@ -42,37 +42,55 @@ var mpachublink = document.getElementById('drop-down-670886e8bdbcd');
             link.setAttribute('href', '#');
             link.classList.add('disabled-link');
             link.style.color = 'gray';  // Change text color to indicate disabled state
-          
               var parentElement = link.parentElement;
+              parentElement.id = "disabled-mpachub-link";
+              
+              tippy('#disabled-mpachub-link', {
+                content:
+                '<h4><strong class="text-secondary-color">Oops! Looks like you`re trying to access a secret door!</strong></h4><p>This page is exclusive for our subscribed members—like a VIP lounge for those who are ready to elevate their leadership game!</p><p class="mb-0">Want in on the action? Join our community and unlock access to amazing resources, insights, and connections that will empower your journey. <button href="#" class="btn btn-danger">Subscribe now</button> and let`s grow together!</p>',
+                allowHTML: true,
+                duration: [100, 500],
+                interactive: true,
+                maxWidth: 500,
+            });
 
-    console.log(parentElement); // Output: <div id="parent">...</div> 
               parentElement.addEventListener('click', function(event) {
             // Check if the link is disabled
             if (link.classList.contains('disabled-link')) {
                 // Prevent the default action (i.e., navigation)
                 event.preventDefault();
-                
+
                 // Show an alert message when a disabled link is clicked
-                alert('This link is disabled because you are not enrolled.');
+           
             }
         });
 
 
            }
-         
+
     });
 
 
         }
     });
+    
 </script>
 
 <style>
-    .disabled-link {   
+    .disabled-link {
         opacity: 0.5;
         color: gray;
         cursor: not-allowed;
     }
+
+.subscribe-now-link {
+    color: #d62125 !important;/* Default color */
+    text-decoration: none; /* Remove underline, optional */
+}
+
+.subscribe-now-link:hover {
+    color: #f76d70 !important;/* Color when hovered */
+}
 </style>
 
 
@@ -160,4 +178,3 @@ var mpachublink = document.getElementById('drop-down-670886e8bdbcd');
             </li>
         </ul>
 </nav>
-
