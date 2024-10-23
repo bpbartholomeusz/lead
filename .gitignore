@@ -2,3 +2,5 @@ moodel/config.php/
 moodledata/
 .well-known/
 index.html
+
+push_to_github.sh
