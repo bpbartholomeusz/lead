@@ -7,13 +7,11 @@ $CFG = new stdClass();
 $CFG->dbtype    = 'mysqli';
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = 'leaddev-rds.cv60ucs2an0k.eu-west-2.rds.amazonaws.com';
-//$CFG->dbhost    = 'moodle-lead.cv60ucs2an0k.eu-west-2.rds.amazonaws.com';
-//$CFG->dbhost    = 'moodle-backup.cv60ucs2an0k.eu-west-2.rds.amazonaws.com';
 $CFG->dbname    = 'moodle';
 $CFG->dbuser    = 'moodleuser';
 $CFG->dbpass    = 'moodleuser';
 $CFG->prefix    = 'mdl_';
-$CFG->dboptions = array (
+$CFG->dboptions = array(
   'dbpersist' => 0,
   'dbport' => 3306,
   'dbsocket' => '',
@@ -21,8 +19,6 @@ $CFG->dboptions = array (
 );
 
 $CFG->wwwroot   = 'https://leaddev.leadcurriculum.cloud';
-//$CFG->wwwroot   = 'https://moodle.leadcurriculum.cloud';
-//$CFG->wwwroot   = 'http://35.178.207.215';
 $CFG->dataroot  = '/var/www/html/moodledata';
 $CFG->admin     = 'admin';
 $CFG->sslproxy = true;
