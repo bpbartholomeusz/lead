@@ -1,10 +1,10 @@
-moodel/config.php
 moodledata/
 .well-known/
 index.html
 
 push_to_github.sh
 
+moodle/config.php
 
 # Ignore cache, session, and temp directories (Moodle-specific directories)
 moodle/cache/
