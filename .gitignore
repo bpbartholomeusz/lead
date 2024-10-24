@@ -7,7 +7,6 @@ index.html/
 moodle/config.php
 
 # Ignore Moodle data directory (adjust if your moodledata directory is located elsewhere)
-moodledata/
 
 # Ignore cache, session, and temp directories (Moodle-specific directories)
 moodle/cache/
