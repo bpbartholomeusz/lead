@@ -19,7 +19,15 @@
 }}
 
 <div id="isuserenrolled" data-enrolled="{{ output.is_user_enrolled }}"></div>
+<style>
+.tippy-box[data-theme~='blackmpac'] {
+  background-color: black;
+}
+.p-mpachubtooltip {
 
+    font-size: .9rem !important;
+}
+</style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Get the enrollment status from the data attribute
@@ -33,7 +41,7 @@ var mpachublink = document.getElementById('drop-down-670886e8bdbcd');
 
     // Get all links with the class 'nav-link'
     var links = document.querySelectorAll('.nav-link');
-
+//top pt4
     // Loop through all links to find the one with the specific text
     links.forEach(function(link) {
         // Check if the link's text matches the desired text
@@ -47,12 +55,29 @@ var mpachublink = document.getElementById('drop-down-670886e8bdbcd');
               
               tippy('#disabled-mpachub-link', {
                 content:
-                '<h4><strong class="text-secondary-color">Oops! Looks like you`re trying to access a secret door!</strong></h4><p>This page is exclusive for our subscribed members—like a VIP lounge for those who are ready to elevate their leadership game!</p><p class="mb-0">Want in on the action? Join our community and unlock access to amazing resources, insights, and connections that will empower your journey. <button href="#" class="btn btn-danger">Subscribe now</button> and let`s grow together!</p>',
+                '<h4 style="font-size:17.5px; !important" id="mpachub-subscribe-tooltip" class="pt-4 px-1"><strong class="text-secondary-color">Oops! Looks like you`re trying to access a secret door!</strong></h4><p class="p-mpachubtooltip pt-2 px-1">This page is exclusive for our subscribed members—like a VIP lounge for those who are ready to elevate their leadership game!</p><p class="mb-0  p-mpachubtooltip pt-2 px-1">Want in on the action? Subscribe now and let`s grow together!</p><p class="mt-3 pr-2  text-right"><button href="#" class="btn btn-danger py-1">Subscribe</button></p>',
                 allowHTML: true,
                 duration: [100, 500],
                 interactive: true,
+                theme: 'blackmpac',
                 maxWidth: 500,
             });
+
+
+ const mpackhublink = document.querySelector('#disabled-mpachub-link');
+
+  // Add a 'mouseover' event to trigger when the user hovers over the child
+  mpackhublink.addEventListener('mouseover', function() {
+                       // Select the child element
+                const childElement = document.querySelector('#mpachub-subscribe-tooltip');
+
+          
+                    // Traverse to the parent of the parent (grandparent)
+                    const grandparentElement = childElement.parentElement.parentElement;
+
+                    // Change the background color of the grandparent
+                    grandparentElement.style.backgroundColor = 'black';  // Set the desired color
+  });
 
               parentElement.addEventListener('click', function(event) {
             // Check if the link is disabled
@@ -65,6 +90,8 @@ var mpachublink = document.getElementById('drop-down-670886e8bdbcd');
             }
         });
 
+
+     
 
            }
 

@@ -1,45 +1,49 @@
-#stage-progress-accordion .card-header {
-  color: #cb73b7;
-  font-size: 1.25rem;
-}
+#stage-progress-accordion {
+  /* width: max-content; */
 
-#stage-progress-accordion .accordion ul {
-  display: flex;
-  flex-direction: column;
-  row-gap: 0.25rem;
-  list-style: none;
-}
+  .card-header {
+    color: #cb73b7;
+    font-size: 1.25rem;
+  }
 
-#stage-progress-accordion ul li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+  .accordion ul {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25rem;
+    list-style: none;
+  }
 
-#stage-progress-accordion ul li > .fa-award {
-  color: gold;
-}
+  ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
-#stage-progress-accordion .accordion ul li > a > b {
-  color: #5e72e4 !important;
-}
+  ul li > .fa-award {
+    color: gold;
+  }
 
-#stage-progress-accordion .lead_champion_certificate {
-  padding: 0.5rem 1.5rem;
-  display: inline-block;
-  margin-bottom: 1rem;
-  border-radius: 0.25rem;
-  text-align: center;
-  background: lightgray;
-  cursor: not-allowed;
-}
+  .accordion ul li > a > b {
+    color: #5e72e4 !important;
+  }
 
-#stage-progress-accordion .qualified {
-  background: #a80a7e;
-  cursor: pointer;
-  padding: 0.5rem 1.5rem;
-  display: inline-block;
-  margin-bottom: 1rem;
-  border-radius: 0.25rem;
-  text-align: center;
+  .lead_champion_certificate {
+    padding: 0.5rem 1.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    background: lightgray;
+    cursor: not-allowed;
+  }
+
+  .qualified {
+    background: #a80a7e;
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    text-align: center;
+  }
 }

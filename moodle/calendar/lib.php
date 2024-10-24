@@ -3617,7 +3617,7 @@ function check_registration_status($eventid, $userid) {
  * @return string The rendered mform fragment.
  */
 function calendar_output_fragment_event_form($args) {
-    global $CFG, $OUTPUT, $USER;
+    global $DB, $CFG, $OUTPUT, $USER;
     require_once($CFG->libdir . '/grouplib.php');
     $html = '';
     $data = [];
@@ -3646,6 +3646,23 @@ function calendar_output_fragment_event_form($args) {
     $eventtypes = calendar_get_allowed_event_types($courseid);
     $formoptions['eventtypes'] = $eventtypes;
 
+
+      //**mod code to add site level groups
+        //Get site-level groups.
+        $sitecontext = context_system::instance();
+        $sitegroups = $DB->get_records_sql(
+            "SELECT g.id, g.name
+            FROM {groups} g
+            WHERE g.courseid = 1" // courseid = 1 represents the site-level groups.
+        );
+
+        // Prepare site-level group options for the dropdown.
+        $sitegroupoptions = [];
+        foreach ($sitegroups as $group) {
+            $sitegroupoptions[$group->id] = $group->name;
+        }
+     //**end */
+
     if (is_null($eventid)) {
         if (!empty($courseid)) {
             $groupcoursedata = groups_get_course_data($courseid);
@@ -3654,7 +3671,7 @@ function calendar_output_fragment_event_form($args) {
                 $formoptions['groups'][$groupid] = $groupdata->name;
             }
         }
-
+        $formoptions['groups'] = $sitegroupoptions; //mod code to add site level groups
         $mform = new \core_calendar\local\event\forms\create(
             null,
             $formoptions,
@@ -3669,12 +3686,14 @@ function calendar_output_fragment_event_form($args) {
         if (!empty($courseid) && !empty($eventtypes['course'])) {
             $data['eventtype'] = 'course';
             $data['courseid'] = $courseid;
-            $data['groupcourseid'] = $courseid;
+            // $data['groupcourseid'] = $courseid;
+            $data['groupcourseid'] = 1;
         } else if (!empty($categoryid) && !empty($eventtypes['category'])) {
             $data['eventtype'] = 'category';
             $data['categoryid'] = $categoryid;
         } else if (!empty($groupcoursedata) && !empty($eventtypes['group'])) {
-            $data['groupcourseid'] = $courseid;
+            // $data['groupcourseid'] = $courseid;
+            $data['groupcourseid'] = 1;
             $data['groups'] = $groupcoursedata->groups;
         }
         $mform->set_data($data);
@@ -3698,7 +3717,7 @@ function calendar_output_fragment_event_form($args) {
                 $formoptions['groups'][$groupid] = $groupdata->name;
             }
         }
-
+        $formoptions['groups'] = $sitegroupoptions; //mod code to add site level groups
         $data['description']['text'] = file_prepare_draft_area(
             $draftitemid,
             $event->context->id,

@@ -45,13 +45,13 @@ class event_form extends moodleform
    */
   function definition()
   {
-    global $CFG, $USER, $OUTPUT;
+    global $DB, $CFG, $USER, $OUTPUT;
     $mform = $this->_form;
     $newevent = (empty($this->_customdata->event) || empty($this->_customdata->event->id));
     $repeatedevents = (!empty($this->_customdata->event->eventrepeats) && $this->_customdata->event->eventrepeats > 0);
     $hasduration = (!empty($this->_customdata->hasduration) && $this->_customdata->hasduration);
     $mform->addElement('header', 'general', get_string('general'));
-
+     
     if ($newevent) {
       $eventtypes = $this->_customdata->eventtypes;
       $options = array();
@@ -81,6 +81,7 @@ class event_form extends moodleform
             array('context' => context_course::instance($group->courseid))
           );
         }
+       
         $mform->addElement('select', 'groupid', get_string('typegroup', 'calendar'), $groupoptions);
         $mform->disabledIf('groupid', 'eventtype', 'noteq', 'group');
       }

@@ -145,7 +145,6 @@ class create extends \moodleform {
             }
         }
 
-
         if ($eventtype == 'course' && empty($courseid)) {
             $errors['courseid'] = get_string('selectacourse');
         }
@@ -159,7 +158,7 @@ class create extends \moodleform {
         }
 
         if ($eventtype == 'group' && empty($courseid)) {
-           //  $errors['groupcourseid'] = get_string('selectacourse');
+            $errors['groupcourseid'] = get_string('selectacourse');
         }
 
         if ($data['duration'] == 1 && $data['timestart'] > $data['timedurationuntil']) {

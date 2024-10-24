@@ -22,6 +22,20 @@ $PAGE->requires->css('/local/proposed_groups/proposed_group_requests.css');
 
 echo $OUTPUT->header();
 ?>
+<h1>Manage Grorups</h1>
+<h1 class="mb-4">Groups</h1>
+<table id="groupsTable" class="table table-bordered dataTable">
+  <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Group Name</th>
+      <th>Description</th>
+      <th>Criteria</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+</table>
+<hr />
 <h1 class="mb-4">Proposed Group Requests</h1>
 <table id="proposedRequestsTable" class="table table-bordered dataTable">
   <thead>
