@@ -1,3 +1,38 @@
 moodledata/
+
 index.html/
 .well-known/
+
+# Ignore the Moodle config file with sensitive credentials
+moodle/config.php
+
+# Ignore Moodle data directory (adjust if your moodledata directory is located elsewhere)
+moodledata/
+
+# Ignore cache, session, and temp directories (Moodle-specific directories)
+moodle/cache/
+moodle/localcache/
+moodle/sessions/
+moodle/temp/
+
+# Ignore backup and logs directories (if present)
+moodle/backup/
+moodle/logs/
+
+# Ignore third-party dependencies (if using Node.js or Composer)
+moodle/node_modules/
+moodle/vendor/
+
+# Ignore IDE or editor-specific files (optional, depending on your development tools)
+moodle/.idea/
+moodle/.vscode/
+
+# Ignore system files or hidden files that should not be pushed
+moodle/*.env
+moodle/*.bak
+moodle/*.swp
+moodle/.DS_Store
+
+# Ignore any other temporary files or sensitive information
+moodle/*.log
+moodle/tmp/
